@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d28048459150cb47af2bc92ea3d5c3c, type: 3}
+  m_Name: AssaultRifleItemData
+  m_EditorClassIdentifier: 
+  itemData:
+    ItemName: Assault Rifle
+    ItemDescription: "The Assault Rifle is an accurate, powerful, and fully automatic
+      rifle that fires 5.56 rifle rounds. It has a moderate rate of fire which allows
+      for proficiency at close to medium range.\r\n\r\nStrong recoil makes it more
+      difficult to fire in full-auto at long range, but experienced users may be able
+      to control it more effectively.\r\n\r\nThe Assault Rifle is generally used as
+      an end-game multipurpose weapon, able to take fights at any range."
+    ItemSprite: {fileID: 21300000, guid: 296bd7dc1a98d8e4492d86860544f4d2, type: 3}
+    StackLimit: 1
+  itemSoundData:
+    ActivateItemSound: {fileID: 0}
+    PickUpItemSound: {fileID: 8300000, guid: e03bdf620cb731f4185fff166107d76d, type: 3}
+    ThrowItemSound: {fileID: 8300000, guid: cd7c93d5224bef74c899b4c3b7390d9c, type: 3}
+    SelectSounds:
+    - {fileID: 8300000, guid: d751a730923f9c94c9a76d08c2509449, type: 3}
+    - {fileID: 8300000, guid: c05f6241cb2d3cc4ea0f745492f427d5, type: 3}
+    - {fileID: 8300000, guid: bc5162f1f06456f4e9c0add03342a3d7, type: 3}
+    - {fileID: 8300000, guid: 7820bf48638eb3b4d8e655ec104d56fb, type: 3}
+    DragSound: {fileID: 8300000, guid: 9670aa1e470f26f4b8f44d6cf7470fb9, type: 3}
+    DropSound: {fileID: 8300000, guid: 18419ed242a2764409f26a3d65a1e69d, type: 3}
+  weaponSettings:
+    RigPrefab: {fileID: 4993513490284432321, guid: ca9b927a90bae3f4bbeeeb0ef1f187d6,
+      type: 3}
+    Automatic: 1
+    ReloadTime: 5
+    RecoilUpKick: 1.4
+    RecoilSideKick: 0.8
+    FireRate: 8
+    ForceMultiplier: 0
+    BulletPrefab: {fileID: 4898616871966289525, guid: 44f970c6d8d54a24bb760ee240838d28,
+      type: 3}
+    ShellPrefab: {fileID: 5406855152314961279, guid: 97a7e711045a1f54d8b740598dba9164,
+      type: 3}
+    MaxClipAmmo: 30
+    BulletDamage: 35
+    BulletDrop: 1
+    EquipSound: {fileID: 8300000, guid: d7d66a7f20c19944aa356c12dacb9c94, type: 3}
+    ShootSounds:
+    - {fileID: 8300000, guid: 1e8b42a65761e7c4db41912be2d00df7, type: 3}
+    ReloadSound: {fileID: 8300000, guid: 430dec58400e8b64d882b497fe411b7f, type: 3}

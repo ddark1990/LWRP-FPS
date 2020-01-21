@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e832aa4d237240b856a485fcdd2d2, type: 3}
+  m_Name: MedRocksDataset
+  m_EditorClassIdentifier: 
+  objectsToPlace:
+  - {fileID: 2644559139595979505, guid: 1e4f642370f9e4f49ae35b2133af9a7c, type: 3}
+  - {fileID: 2628438268592344509, guid: 827749af64878ae43bc96c114290ab46, type: 3}
+  - {fileID: 6383233139708028807, guid: 06f824ba86daabd4a8bfcd6217c374cd, type: 3}
+  - {fileID: 8342475498500274729, guid: 1c546c42ffc264e49abd19e9e9d737ff, type: 3}
+  - {fileID: 1455270308404202748, guid: 6bbba94948c70bd47b5ffa7a3d1e61b9, type: 3}
+  - {fileID: 218058092321856551, guid: 4bee8b187024c054ab6daa77164838b8, type: 3}
+  - {fileID: 9130601141270283759, guid: 106b4d88145490349b94765f99f8d3ca, type: 3}
+  - {fileID: 5319154814898993891, guid: b621d1369d31d7748b17b45186dcf947, type: 3}

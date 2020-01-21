@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560d2e853237978409b1ef0e8292dc77, type: 3}
+  m_Name: StoneResourceType
+  m_EditorClassIdentifier: 
+  itemData:
+    ItemName: Stone
+    ItemDescription: Stone resource.
+    ItemSprite: {fileID: 21300000, guid: 521dc6cd92b5eaf41a009b8d2943c5a4, type: 3}
+    StackLimit: 1000
+  itemSoundData:
+    UseItemSound: {fileID: 8300000, guid: 6b25ebfaade642f489feb9403911072e, type: 3}
+    PickUpItemSound: {fileID: 8300000, guid: 6c736df29056c294f9fbcdaea24c379c, type: 3}
+    ThrowItemSound: {fileID: 8300000, guid: cd7c93d5224bef74c899b4c3b7390d9c, type: 3}
+    SelectSounds:
+    - {fileID: 8300000, guid: 234dcf1353eb8fb4283b8eb586e4a7fc, type: 3}
+    DragSound: {fileID: 8300000, guid: cadda560a69740e4390a7742a37d5be9, type: 3}
+    DropSound: {fileID: 8300000, guid: 3747e18759907c44696dbf582829f7c4, type: 3}

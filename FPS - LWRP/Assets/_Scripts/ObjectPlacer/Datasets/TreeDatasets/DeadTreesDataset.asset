@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e832aa4d237240b856a485fcdd2d2, type: 3}
+  m_Name: DeadTreesDataset
+  m_EditorClassIdentifier: 
+  objectsToPlace:
+  - {fileID: 5471706995252174139, guid: 33a737a01b63e854a84040db04fd3712, type: 3}
+  - {fileID: 631783137164766104, guid: 6832d7768ffca6a4e837d5eed69a82ba, type: 3}
+  - {fileID: 715206851797022778, guid: 0dbc60001fb39d344b4e901805976e08, type: 3}
+  - {fileID: 181682312825463522, guid: 10556f3d7608c3e47b62db3b08465e7a, type: 3}
+  - {fileID: 5727892701980162218, guid: f6b26de2d9346814e830505d672a0245, type: 3}
+  - {fileID: 1714666244593709011, guid: e95b7ca8e2c68c5498773d091d95e3e4, type: 3}
+  - {fileID: 2878532573225133739, guid: 241b2839983c6b142bfdf7639f289d95, type: 3}
+  - {fileID: 4040132980764962412, guid: 819802513298ea34a8cb7d9c24a61a7c, type: 3}
+  - {fileID: 8235306645872328155, guid: a3f2d613db87c254883cfb22c06223b3, type: 3}
+  - {fileID: 887332486704408207, guid: 46085bd757379214baedbc3494ee7623, type: 3}
+  - {fileID: 7630226402734599047, guid: 9f45a34005a34c5439f51bb2a1112124, type: 3}

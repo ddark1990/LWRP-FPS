@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Owl
+  m_Shader: {fileID: 4800000, guid: 1a48b2f33a6b38545b8a1564a9127834, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_30FEF525:
+        m_Texture: {fileID: 2800000, guid: b034d0009b165a8478f183f90fba4ebb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_BC5C4916:
+        m_Texture: {fileID: 2800000, guid: f05e70052e5eb204ca3d56de39029713, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F611A408:
+        m_Texture: {fileID: 2800000, guid: f05e70052e5eb204ca3d56de39029713, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2D_9C1AB30B:
+        m_Texture: {fileID: 2800000, guid: b034d0009b165a8478f183f90fba4ebb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_373550C6: 1
+    - Vector1_3CFD09B5: 0
+    - Vector1_49B8E4A6: 0.028
+    - Vector1_54676F70: 5.25
+    - Vector1_5F8B816A: 0.749
+    - Vector1_8386A876: 0.598
+    - Vector1_98063928: 0.19
+    - Vector1_C5F28BFB: 0.5
+    m_Colors:
+    - Color_41D339AC: {r: 0, g: 0, b: 0, a: 1}
+    - Color_DEB3AA71: {r: 1, g: 0.8623325, b: 0.080188684, a: 0}
+    - _LightDir: {r: -0.16, g: 1.75, b: 0, a: 0}

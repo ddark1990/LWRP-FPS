@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e832aa4d237240b856a485fcdd2d2, type: 3}
+  m_Name: TreeDebreeDataset
+  m_EditorClassIdentifier: 
+  objectsToPlace:
+  - {fileID: 8450134014128454437, guid: 4b00391f1263db9408c28ba0751d0825, type: 3}
+  - {fileID: 7625102773656063131, guid: 2596dc38506ee09428cbedd190fd4f28, type: 3}
+  - {fileID: 3554642824788407074, guid: 5347740a4274d1c49a4af88ea891d403, type: 3}
+  - {fileID: 2721666987875577525, guid: 0d72fe7c55779894a85af51fb5423f1c, type: 3}
+  - {fileID: 6951444100217332710, guid: 91789d4b39fb2f549a661a8ecb8398ee, type: 3}
+  - {fileID: 2735468467708683032, guid: ad8e8bbe3bab9a34494309103ae43fb1, type: 3}
+  - {fileID: 1714666244593709011, guid: e95b7ca8e2c68c5498773d091d95e3e4, type: 3}
+  - {fileID: 109151063762657303, guid: 140b0aa01b362624f87b2d3a8f4421a5, type: 3}

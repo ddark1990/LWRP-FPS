@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e832aa4d237240b856a485fcdd2d2, type: 3}
+  m_Name: BirchTreesDataset
+  m_EditorClassIdentifier: 
+  objectsToPlace:
+  - {fileID: 1023017322674227471, guid: f95e36c03a71b80498af0245eb8d3818, type: 3}
+  - {fileID: 6095886481352978240, guid: ea5519e77e2f10e4b8383e79f3100767, type: 3}
+  - {fileID: 5367055256102934106, guid: a5be539f0a7cf6644b03d298f638a7dd, type: 3}
+  - {fileID: 2510150607790398223, guid: 2fc12e092f8070d468d4b6b8f6a15756, type: 3}
+  - {fileID: 2525464605714174543, guid: 068246f3f72a15949af7a2483d93eb67, type: 3}

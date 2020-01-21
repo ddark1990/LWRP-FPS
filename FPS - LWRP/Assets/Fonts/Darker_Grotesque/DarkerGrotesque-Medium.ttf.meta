@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: e4f5ee4eb5964714da9360695cd1f719
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Darker Grotesque
+  fontNames:
+  - Darker Grotesque
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 183d8e463822f51469a48f39a1ac41d9, type: 3}
+  - {fileID: 12800000, guid: d85e400b1b0a43a4fa1347e32f2ec079, type: 3}
+  - {fileID: 12800000, guid: a82db73be4f2dd9499070d0a735481f7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

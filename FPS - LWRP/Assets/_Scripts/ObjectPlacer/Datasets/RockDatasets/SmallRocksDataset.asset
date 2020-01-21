@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e832aa4d237240b856a485fcdd2d2, type: 3}
+  m_Name: SmallRocksDataset
+  m_EditorClassIdentifier: 
+  objectsToPlace:
+  - {fileID: 868188130960530595, guid: 78eb0099bca3fff49a29a1c271853dde, type: 3}
+  - {fileID: 3208530318415812076, guid: 8e638e8ae7570b6408fe5601401634b7, type: 3}
+  - {fileID: 1637444424108042436, guid: 02d985779747da24493698e2defa36a6, type: 3}
+  - {fileID: 6408265807597486513, guid: cd3e6eccfde2293449bc91e0ccb5d2b0, type: 3}
+  - {fileID: 2445087435725546210, guid: 48d1b69af2dfdd04083d88440f7adcf7, type: 3}
+  - {fileID: 2569925861041395365, guid: e520f26aa1a3e7c41beba3ff4414510f, type: 3}
+  - {fileID: 4298322680608284848, guid: 102295810a1eea844baf9db9258711ff, type: 3}
+  - {fileID: 7575667844403332661, guid: 86babe56e79bfd744b6b8dbf3e9a60ad, type: 3}
+  - {fileID: 4932744859589461622, guid: 0f84f90af11e6294dac8987a7436eece, type: 3}

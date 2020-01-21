@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8e832aa4d237240b856a485fcdd2d2, type: 3}
+  m_Name: PineTreesDataset
+  m_EditorClassIdentifier: 
+  objectsToPlace:
+  - {fileID: 6622531327169626299, guid: ea31dab4aec4b214e926e4916cb9851a, type: 3}
+  - {fileID: 8634028085985014149, guid: 319d44671ae20f44483f17451cb3e14b, type: 3}
+  - {fileID: 8797376672671169351, guid: 7a12805ef84c5fd469eb06234e868691, type: 3}
+  - {fileID: 7788166137030580006, guid: c5899847279828345a0d4d76976c7038, type: 3}
+  - {fileID: 1091708593011664464, guid: 31833357ddd251c458e418347f7263f1, type: 3}
+  - {fileID: 7672457077223583526, guid: b68fd5eeaba5a5d47944fbfb321649f3, type: 3}

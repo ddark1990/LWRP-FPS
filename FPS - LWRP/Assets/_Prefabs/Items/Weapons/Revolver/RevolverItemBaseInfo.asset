@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aabe10f47ab7ea4882cc1c9e2bf65ca, type: 3}
+  m_Name: RevolverItemBaseInfo
+  m_EditorClassIdentifier: 
+  itemType: 1
+  ItemName: Revolver
+  ItemDescription: "The Revolver is cheap, prime for early game use. Although inaccurate,
+    the Revolver's quick rate of fire allows it hold its own against players at most
+    stages. Being a revolver, it has a low capacity of just 8 shots, but it's still
+    an upgrade from its 1- and 2- shot alternatives.\r\n\r\nTaking a Revolver to a
+    fight against opponents with metal armor is quite risky, as such opponents will
+    take many more shots than normal to take out (even more so considering the small
+    capacity). It is best advised to only use the Revolver against opponents with
+    similar armaments or as a sidearm to another weapon."
+  ItemSprite: {fileID: 21300000, guid: f0abbe9cc8c5ea24fb613424098b7de4, type: 3}
+  StackLimit: 1
+  UseItemSound: {fileID: 0}
+  PickUpItemSound: {fileID: 8300000, guid: e03bdf620cb731f4185fff166107d76d, type: 3}
+  DropItemSound: {fileID: 8300000, guid: 3747e18759907c44696dbf582829f7c4, type: 3}
+  SelectSounds:
+  - {fileID: 8300000, guid: d751a730923f9c94c9a76d08c2509449, type: 3}
+  - {fileID: 8300000, guid: c05f6241cb2d3cc4ea0f745492f427d5, type: 3}
+  - {fileID: 8300000, guid: bc5162f1f06456f4e9c0add03342a3d7, type: 3}
+  - {fileID: 8300000, guid: 7820bf48638eb3b4d8e655ec104d56fb, type: 3}
+  DragSound: {fileID: 8300000, guid: 9670aa1e470f26f4b8f44d6cf7470fb9, type: 3}
+  DropSound: {fileID: 8300000, guid: 18419ed242a2764409f26a3d65a1e69d, type: 3}

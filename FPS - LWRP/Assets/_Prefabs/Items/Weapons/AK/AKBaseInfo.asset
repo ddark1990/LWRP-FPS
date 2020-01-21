@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aabe10f47ab7ea4882cc1c9e2bf65ca, type: 3}
+  m_Name: AKBaseInfo
+  m_EditorClassIdentifier: 
+  itemType: 1
+  ItemName: AK
+  ItemDescription: Shoot people with it.
+  ItemSprite: {fileID: 21300000, guid: 296bd7dc1a98d8e4492d86860544f4d2, type: 3}
+  StackLimit: 1
+  UseItemSound: {fileID: 0}
+  PickUpItemSound: {fileID: 8300000, guid: 6c736df29056c294f9fbcdaea24c379c, type: 3}
+  DropItemSound: {fileID: 8300000, guid: cd7c93d5224bef74c899b4c3b7390d9c, type: 3}
+  SelectSound: {fileID: 8300000, guid: 234dcf1353eb8fb4283b8eb586e4a7fc, type: 3}
+  DragSound: {fileID: 8300000, guid: cadda560a69740e4390a7742a37d5be9, type: 3}
+  DropSound: {fileID: 8300000, guid: 3747e18759907c44696dbf582829f7c4, type: 3}

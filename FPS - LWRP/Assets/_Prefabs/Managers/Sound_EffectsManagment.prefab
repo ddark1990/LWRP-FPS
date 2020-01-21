@@ -1,0 +1,209 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1820635907609252689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820635907609252690}
+  - component: {fileID: 1820635907609252691}
+  - component: {fileID: 1820635907609252688}
+  m_Layer: 0
+  m_Name: Sound_EffectsManagment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1820635907609252690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820635907609252689}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1820635907609252691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820635907609252689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1257743d1287b9147a5a2ccc40780b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 1820635907609252688}
+  HitMarkerSound: {fileID: 8300000, guid: 48c18ee16408ba04d9111a43481a6bd9, type: 3}
+  HeadShotSound: {fileID: 8300000, guid: cb968d2b6c2d24a4da6d929feff6b254, type: 3}
+  hitMarkerVolume: 0.2
+  footstepData:
+  - Name: sand
+    index: 0
+    FootstepSounds:
+    - {fileID: 8300000, guid: 8d7e2fa0afa5691449a7816f58ddd9f2, type: 3}
+    - {fileID: 8300000, guid: 096edcfe85b849040bdd274e706558e0, type: 3}
+    - {fileID: 8300000, guid: 55a31255fc927614aa71ca5eff2b99f9, type: 3}
+    - {fileID: 8300000, guid: 248a61d10c9a6db409bf55efb2b352c0, type: 3}
+    - {fileID: 8300000, guid: 03172f585d3e4da408810c4ebeb55c68, type: 3}
+    FootstepEffects: {fileID: 0}
+  - Name: grass
+    index: 1
+    FootstepSounds:
+    - {fileID: 8300000, guid: a6c40daced3a5f1439a88ef647830bfd, type: 3}
+    - {fileID: 8300000, guid: c0800de4aae03db4887b0837ede5a6d8, type: 3}
+    FootstepEffects: {fileID: 0}
+  - Name: dirt
+    index: 2
+    FootstepSounds:
+    - {fileID: 8300000, guid: 3af311f16ee39b84ab7ee1d46cb5f886, type: 3}
+    - {fileID: 8300000, guid: 1f01eccd09c8a324696c12fd335180d5, type: 3}
+    - {fileID: 8300000, guid: b2aae382d8ab42542ac3abba8f85cbff, type: 3}
+    - {fileID: 8300000, guid: 2bea1b45b7f68864ea4a6e04aafb4cbd, type: 3}
+    FootstepEffects: {fileID: 0}
+  - Name: snow
+    index: 3
+    FootstepSounds: []
+    FootstepEffects: {fileID: 0}
+  FootstepVolume: 0.1
+  bulletImpactData:
+  - TagName: Ground
+    ImpactSounds: []
+    ImpactEffect: {fileID: 6754774522056113480, guid: 57f1851067e1bcb408a323ba115df333,
+      type: 3}
+  - TagName: Humanoid
+    ImpactSounds: []
+    ImpactEffect: {fileID: 5667538971702292751, guid: 496fee57713515043bbf6042bce47f53,
+      type: 3}
+  - TagName: Wood
+    ImpactSounds: []
+    ImpactEffect: {fileID: 3738974745440900838, guid: 630c3529c2a34da4d8b573481c1b549a,
+      type: 3}
+  - TagName: Stone
+    ImpactSounds: []
+    ImpactEffect: {fileID: 825362472377034047, guid: 830cb960c8508b84fb571142bddf0218,
+      type: 3}
+  - TagName: Metal
+    ImpactSounds: []
+    ImpactEffect: {fileID: 2516812150820488483, guid: a8ee746364709d74d9304e9141beea07,
+      type: 3}
+  - TagName: Zombie
+    ImpactSounds: []
+    ImpactEffect: {fileID: 5667538971702292751, guid: 496fee57713515043bbf6042bce47f53,
+      type: 3}
+  BulletImpactVolume: 0.2
+  enabled: 0
+  AiDeathSounds:
+  - {fileID: 8300000, guid: 8f74e7d57fc2ec246a13eaf5f5124742, type: 3}
+  - {fileID: 8300000, guid: ca1a1415f03009d4c8ce0dc9bd8178e1, type: 3}
+  - {fileID: 8300000, guid: 8c4ede2eb153afb42a620124355763b3, type: 3}
+  - {fileID: 8300000, guid: 0e8300e0ebbe21044b50f720cb1130ca, type: 3}
+  - {fileID: 8300000, guid: 55056465709acbe4e9d05138887244ab, type: 3}
+  AiVolume: 0.7
+--- !u!82 &1820635907609252688
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820635907609252689}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
