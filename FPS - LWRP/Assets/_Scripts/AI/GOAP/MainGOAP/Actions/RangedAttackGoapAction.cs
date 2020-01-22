@@ -11,7 +11,7 @@ public class RangedAttackGoapAction : GoapAction
     public RangedAttackGoapAction()
     {
         addPrecondition("hasTarget", true);
-        addEffect("hasTarget", true);
+        addEffect("attackFromCover", true);
     }
 
     public override void reset()

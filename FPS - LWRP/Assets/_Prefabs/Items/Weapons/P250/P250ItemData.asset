@@ -22,7 +22,7 @@ MonoBehaviour:
     ItemSprite: {fileID: 21300000, guid: f026f50cf1e40a24eb90f7a9e332e84f, type: 3}
     StackLimit: 1
   itemSoundData:
-    UseItemSound: {fileID: 0}
+    ActivateItemSound: {fileID: 0}
     PickUpItemSound: {fileID: 8300000, guid: e03bdf620cb731f4185fff166107d76d, type: 3}
     ThrowItemSound: {fileID: 8300000, guid: cd7c93d5224bef74c899b4c3b7390d9c, type: 3}
     SelectSounds:
@@ -33,6 +33,7 @@ MonoBehaviour:
     DragSound: {fileID: 8300000, guid: 9670aa1e470f26f4b8f44d6cf7470fb9, type: 3}
     DropSound: {fileID: 8300000, guid: 18419ed242a2764409f26a3d65a1e69d, type: 3}
   weaponSettings:
+    weaponTier: 2
     RigPrefab: {fileID: 461864633970784320, guid: a28383484d14d4f4a94829912062efc6,
       type: 3}
     Automatic: 0

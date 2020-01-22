@@ -25,7 +25,12 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
         worldData.Add(new KeyValuePair<string, object>("pickUpAvailable", aiStateController.pickUpAvailable));
         worldData.Add(new KeyValuePair<string, object>("inCombat", aiStateController.inCombat));
-        worldData.Add(new KeyValuePair<string, object>("holdsWeapon", aiStateController.aiInventory.HasWeaponsInInventory()));
+        worldData.Add(new KeyValuePair<string, object>("hasTarget", aiStateController.target));
+        worldData.Add(new KeyValuePair<string, object>("hasWeaponInInventory", aiStateController.aiInventory.HasWeaponInInventory()));
+        worldData.Add(new KeyValuePair<string, object>("weaponEquipAvailable", aiStateController.weaponEquiped == null));
+        worldData.Add(new KeyValuePair<string, object>("isHungry", aiStateController.aiVitals.IsHungry()));
+        worldData.Add(new KeyValuePair<string, object>("isThirsty", aiStateController.aiVitals.IsThirsty()));
+        //worldData.Add(new KeyValuePair<string, object>("targetAlive", aiStateController.target)); 
         
         return worldData;
     }
@@ -36,7 +41,13 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
         goalData.Add(new KeyValuePair<string, object>("wander", true));
         goalData.Add(new KeyValuePair<string, object>("pickUpItem", true));
+        //goalData.Add(new KeyValuePair<string, object>("killTarget", true));
+        //goalData.Add(new KeyValuePair<string, object>("attackFromCover", true));
+        //goalData.Add(new KeyValuePair<string, object>("coverFire", true));
+        //goalData.Add(new KeyValuePair<string, object>("throwGrenade", true));
         goalData.Add(new KeyValuePair<string, object>("equipWeapon", true));
+        //goalData.Add(new KeyValuePair<string, object>("eat", true));
+        //goalData.Add(new KeyValuePair<string, object>("drink", true));
         
         return goalData;
     }
@@ -46,7 +57,7 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
         // Not handling this here since we are making sure our goals will always succeed.
         // But normally you want to make sure the world state has changed before running
         // the same goal again, or else it will just fail.
-        Debug.Log("failedGoal");
+        //Debug.Log("failedGoal");
     }
 
     public void planFound(HashSet<KeyValuePair<string,object>> goal, Queue<GoapAction> actions)

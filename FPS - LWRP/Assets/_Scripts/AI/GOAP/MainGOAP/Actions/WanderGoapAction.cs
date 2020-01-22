@@ -82,7 +82,7 @@ public class WanderGoapAction : GoapAction
     {
         if (!showWanderRadius) return;
         {
-            var color = Color.Lerp(Color.yellow, Color.magenta, Mathf.PingPong(Time.time, 1));
+            var color = Color.Lerp(new Color(1f, 0.61f, 0.27f), new Color(0.23f, 0.89f, 1f), Mathf.PingPong(Time.time, 1));
 
             Gizmos.color = color;
             Gizmos.DrawWireSphere(transform.position, wanderRadius);

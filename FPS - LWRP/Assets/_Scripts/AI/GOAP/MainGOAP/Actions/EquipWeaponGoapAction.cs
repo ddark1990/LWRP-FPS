@@ -11,7 +11,8 @@ public class EquipWeaponGoapAction : GoapAction
 
     public EquipWeaponGoapAction()
     {
-        addPrecondition("holdsWeapon", true);
+        addPrecondition("hasWeaponInInventory", true);
+        addPrecondition("weaponEquipAvailable", true);
         addEffect("equipWeapon", true);
     }
 
@@ -40,18 +41,19 @@ public class EquipWeaponGoapAction : GoapAction
     {
         if (_startTime == 0)
         {
-            Debug.Log("Starting to equip weapon.");
-            
+            //Debug.Log("Starting to equip weapon.");
             _startTime = Time.time;
+            
             controller.animator.SetTrigger("PullOutWeapon");
+            controller.animator.SetBool("HasWeaponEquiped", true);
         }
 
         if ((Time.time - _startTime > controller.animator.GetCurrentAnimatorStateInfo(2).length)) //wait til animation is over
         {
-            Debug.Log("Finished equipping weapon.");
+            //Debug.Log("Finished equipping weapon.");
             
-            controller.animator.SetBool("HasWeaponEquiped", true);
-
+            controller.weaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
+            
             _completed = true;
         }
        

@@ -232,7 +232,7 @@ public class FieldOfView : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, viewRadius);
+        //Gizmos.DrawWireSphere(transform.position, viewRadius);
         Gizmos.DrawRay(transform.position + new Vector3(0,rayHeight,0), transform.forward);
     }
 }

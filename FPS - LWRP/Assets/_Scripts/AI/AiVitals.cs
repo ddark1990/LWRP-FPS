@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,17 +7,39 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class AiVitals : MonoBehaviour
 {
-    [SerializeField] private float Health;
+    public float health;
+    public float hunger = 100;
+    public float thirst = 100;
+    
+    [Header("Vitals Reduce Rate")]
+    [SerializeField] private float hungerRate = 1;
+    [SerializeField] private float thirstRate = 1;
+    
+    [Header("Hungry/Thirsty At")]
+    [SerializeField] private float hungerThreshold = 25;
+    [SerializeField] private float thirstThreshold = 1;
+    
     public bool isDead;
 
     [Header("Cache")]
     public RagdollController ragDollController;
 
-    private float startingHealth;
+    private float _startingHealth;
 
+    private const float MaxHunger = 50;
+    private const float MaxThirst = 100;
+
+    
+    
     private void Awake()
     {
-        startingHealth = Health;
+        _startingHealth = health;
+    }
+    
+    private void Update()
+    {
+        HungerOutput();
+        ThirstOutput();
     }
 
     private void FixedUpdate()
@@ -27,14 +50,27 @@ public class AiVitals : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Health -= damage;
+        health -= damage;
 
-        if (Health <= 0 && !isDead)
+        if (health <= 0 && !isDead)
         {
             Die();
         }
     }
-
+    
+    private void HungerOutput()
+    {
+        if (hunger <= 0) return;
+        //hunger = Mathf.Clamp(hunger, 0, MaxHunger);
+        hunger -= Time.deltaTime * hungerRate;
+    }
+    private void ThirstOutput()
+    {
+        if (thirst <= 0) return;
+        //thirst = Mathf.Clamp(thirst, 0, MaxThirst);
+        thirst -= Time.deltaTime * thirstRate;
+    }
+    
     private void Die()
     {
         isDead = !isDead;
@@ -43,7 +79,7 @@ public class AiVitals : MonoBehaviour
         var animator = GetComponent<Animator>();
         var navAgent = GetComponent<NavMeshAgent>();
         var rb = GetComponent<Rigidbody>();
-        var lastColliderHitName = WeaponManager.Instance.ColliderHit.name;
+        //var lastColliderHitName = WeaponManager.Instance.ColliderHit.name;
         //Debug.Log(lastColliderHitName);
 
         if (isDead) //turn into interface
@@ -59,4 +95,12 @@ public class AiVitals : MonoBehaviour
         //ragDollController.ApplyBulletForceToCollider(lastColliderHitName);
     }
 
+    public bool IsHungry()
+    {
+        return hunger <= hungerThreshold;
+    }
+    public bool IsThirsty()
+    {
+        return thirst <= thirstThreshold;
+    }
 }

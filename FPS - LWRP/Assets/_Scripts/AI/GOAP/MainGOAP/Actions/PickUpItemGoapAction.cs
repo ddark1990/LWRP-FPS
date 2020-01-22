@@ -10,6 +10,7 @@ public class PickUpItemGoapAction : GoapAction
     
     private float _startTime;
     private bool _completed;
+    private Item _targetItem;
 
     public PickUpItemGoapAction()
     {
@@ -38,17 +39,18 @@ public class PickUpItemGoapAction : GoapAction
         if (!controller.pickUpAvailable) return false;
 
         var closestItem = controller.FindClosestItemInCollection(controller.fieldOfView.resultTargetArr, transform);
-        //Debug.Log(closestItem);
         
         target = closestItem.transform;
         
         return true;
     }
-
+    
     public override bool perform(AiStateController controller)
     {
         if (_startTime == 0)
         {
+            _targetItem = target.GetComponent<Item>();
+
             //Debug.Log("Starting to pick up item.");
             
             _startTime = Time.time;
@@ -59,7 +61,7 @@ public class PickUpItemGoapAction : GoapAction
         {
             //Debug.Log("Picked up item.");
         
-            controller.aiInventory.AddItemToInventory(target.gameObject);
+            controller.aiInventory.AddItemToInventory(_targetItem);
             
             controller.pickUpAvailable = false; //reset 
             _completed = true;

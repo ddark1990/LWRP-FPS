@@ -20,11 +20,12 @@ using static AiJobUtil;
 public class AiStateController : MonoBehaviour
 {
     public Transform target;
-
+    public Weapon weaponEquiped;
+    
     public bool hasAgro, isFeeding, isResting, isFleeing, isIdle, isHungry;
     //goap action states
     public bool pickUpAvailable, inCombat;
-    
+
     public float distanceFromTarget;
 
     [HideInInspector] public AiVitals aiVitals;

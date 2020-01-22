@@ -5,39 +5,57 @@ using UnityEngine;
 
 public class GenericInventory : MonoBehaviour
 {
-    public List<GameObject> holdingItems;
+    public List<Item> holdingItems;
     
-    public bool holdingRangedWeapon;
-    public bool holdingMeleeWeapon;
-    
-    public void AddItemToInventory(GameObject itemToAdd)
+    public void AddItemToInventory(Item itemToAdd)
     {
         holdingItems.Add(itemToAdd);
         
         itemToAdd.transform.SetParent(transform);
-        itemToAdd.SetActive(false);
+        itemToAdd.transform.localPosition = new Vector3(0,0,0);
+        itemToAdd.gameObject.SetActive(false);
     }
 
-    public void RemoveItemFromInventory(GameObject itemToRemove)
+    public void RemoveItemFromInventory(Item itemToRemove)
     {
         itemToRemove.transform.SetParent(null);
-        itemToRemove.SetActive(true);
+        itemToRemove.gameObject.SetActive(true);
 
         holdingItems.Remove(itemToRemove);
     }
     
-    public bool HasWeaponsInInventory()
+    public bool HasWeaponInInventory()
     {
         Item weapon = null;
         
         foreach (var item in holdingItems)
         {
-            if (item.GetComponent<Item>().ItemType as Weapon)
+            if (item.ItemType as Weapon)
             {
-                weapon = item.GetComponent<Item>();
+                weapon = item;
             }
         }
         return weapon != null && weapon.ItemType as Weapon;
     }
 
+    public Weapon GetBestWeaponFromInventory()
+    {
+        Weapon bestWeapon = null;
+
+        for (var i = 0; i < holdingItems.Count; i++)
+        {
+            var itemType = holdingItems[i].ItemType;
+
+            if (!(itemType as Weapon)) continue;
+            
+            bestWeapon = itemType as Weapon;
+
+            if (bestWeapon != null && ((Weapon) itemType).weaponSettings.weaponTier > bestWeapon.weaponSettings.weaponTier)
+            {
+                bestWeapon = (Weapon)itemType;
+            }
+        }
+        
+        return bestWeapon;
+    }
 }

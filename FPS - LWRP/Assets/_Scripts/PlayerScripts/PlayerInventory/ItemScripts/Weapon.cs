@@ -9,6 +9,7 @@ public class Weapon : ItemType
     [Serializable]
     public struct WeaponSettings
     {
+        public byte weaponTier;
         public GameObject RigPrefab;
 
         public bool Automatic;
