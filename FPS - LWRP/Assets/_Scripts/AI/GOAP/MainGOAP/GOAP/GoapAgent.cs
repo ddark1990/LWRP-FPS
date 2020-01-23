@@ -73,6 +73,8 @@ public class GoapAgent : MonoBehaviour {
 		_worldState = dataProvider.getWorldState();
 		_goal = dataProvider.createGoalState();
 	}
+
+	public bool debugPlanner;
 	
 	private void createIdleState() {
 		idleState = (fsm, aiStateController) => {
@@ -81,15 +83,18 @@ public class GoapAgent : MonoBehaviour {
 			// get the world state and the goal we want to plan for
 			UpdateAgentState();
 
-            foreach (var item in _goal)
-            {
-                Debug.Log(item.Key + " " + item.Value);
-            }
-            foreach (var item in _worldState)
-            {
-                Debug.Log(item.Key + " " + item.Value);
-            }
-
+			if (debugPlanner)
+			{
+				foreach (var item in _goal)
+				{
+					Debug.Log(item.Key + " " + item.Value);
+				}
+				foreach (var item in _worldState)
+				{
+					Debug.Log(item.Key + " " + item.Value);
+				}
+			}
+            
 			// Plan
 			Queue<GoapAction> plan = planner.plan(aiStateController, availableActions, _worldState, _goal);
 			if (plan != null) {

@@ -32,6 +32,8 @@ public class AiStateController : MonoBehaviour
     [HideInInspector] public FieldOfView fieldOfView;
     [HideInInspector] public GenericInventory aiInventory;
     [HideInInspector] public NavMeshAgent navAgent;
+    [HideInInspector] public WeaponHolder weaponHolder;
+    [HideInInspector] public IKControl iKControl;
     [HideInInspector] public Animator animator; //create an animator controller
 
     [Header("Debug")] 
@@ -63,6 +65,8 @@ public class AiStateController : MonoBehaviour
         aiInventory = GetComponentInChildren<GenericInventory>();
         navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        weaponHolder = GetComponent<WeaponHolder>();
+        iKControl = GetComponent<IKControl>();
     }
 
     private void Update()

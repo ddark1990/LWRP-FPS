@@ -57,7 +57,129 @@ ModelImporter:
       heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
+      curves:
+      - name: RightFootIK
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0.99765015
+            inSlope: 0.0049182186
+            outSlope: 0.0049182186
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.2496788
+            value: 0.9988781
+            inSlope: 0.0055226693
+            outSlope: 0.0055226693
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 0.25052574
+            value: -0.0024612965
+            inSlope: 0.003767094
+            outSlope: 0.003767094
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.2332831
+          - serializedVersion: 3
+            time: 0.86313045
+            value: -0.0014284551
+            inSlope: -0.009534042
+            outSlope: -0.009534042
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 0.8635314
+            value: 0.99781144
+            inSlope: -0.0018197022
+            outSlope: -0.0018197022
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 1
+            value: 0.99765015
+            inSlope: -0.0011818849
+            outSlope: -0.0011818849
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          preInfinity: 2
+          postInfinity: 2
+          rotationOrder: 4
+      - name: LeftFootIK
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0.0000038146973
+            value: -0.00064468384
+            inSlope: -0.007802413
+            outSlope: -0.007802413
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.35635993
+            value: -0.0034251213
+            inSlope: -0.0004566032
+            outSlope: -0.0004566032
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 0.35966337
+            value: 0.99511325
+            inSlope: 0.0031511853
+            outSlope: 0.0031511853
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 0.69666106
+            value: 0.9946931
+            inSlope: -0.0013482785
+            outSlope: -0.0013482785
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 0.7828067
+            value: -0.004111184
+            inSlope: -0.00083608774
+            outSlope: -0.00083608774
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 1.0007935
+            value: -0.004371643
+            inSlope: -0.0011948398
+            outSlope: -0.0011948398
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          preInfinity: 2
+          postInfinity: 2
+          rotationOrder: 4
       events: []
       transformMask: []
       maskType: 3

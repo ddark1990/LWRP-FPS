@@ -17,6 +17,8 @@ public class IKControl : MonoBehaviour
     public LayerMask groundLayer;
     
     private Animator _animator;
+    private static readonly int rightFootIk = Animator.StringToHash("RightFootIK");
+    private static readonly int leftFootIk = Animator.StringToHash("LeftFootIK");
 
     private void Start()
     {
@@ -32,8 +34,8 @@ public class IKControl : MonoBehaviour
             //left hand
             if (leftHandIkPosition)
             {
-                _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+                _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+                _animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
 
                 _animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandIkPosition.position);
                 _animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandIkPosition.rotation);
@@ -41,8 +43,8 @@ public class IKControl : MonoBehaviour
             //right hand
             if (rightHandIkPosition)
             {
-                _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-                _animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+                _animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+                _animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
 
                 _animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandIkPosition.position);
                 _animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandIkPosition.rotation);
@@ -52,10 +54,10 @@ public class IKControl : MonoBehaviour
         if (enableFeetIk)
         {
             //set feet weights
-            _animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1);
-            _animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1);
-            _animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1);
-            _animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1);
+            _animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, _animator.GetFloat(rightFootIk));
+            _animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, _animator.GetFloat(rightFootIk));
+            _animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, _animator.GetFloat(leftFootIk));
+            _animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, _animator.GetFloat(leftFootIk));
 
             //left foot
             RaycastHit hit;

@@ -4,17 +4,16 @@ using System.Collections;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-public class EquipWeaponGoapAction : GoapAction
+public class UnEquipWeaponGoapAction : GoapAction
 {
     private float _startTime;
     private bool _completed;
 
-    public EquipWeaponGoapAction()
+    public UnEquipWeaponGoapAction()
     {
-        addPrecondition("hasWeaponInInventory", true);
-        addPrecondition("weaponEquiped", false);
-        addPrecondition("inCombat", true);
-        addEffect("equipWeapon", true);
+        addPrecondition("weaponEquiped", true);
+        addPrecondition("inCombat", false);
+        addEffect("unEquipWeapon", true);
     }
 
     public override void reset()
@@ -42,23 +41,24 @@ public class EquipWeaponGoapAction : GoapAction
     {
         if (_startTime == 0)
         {
-            //Debug.Log("Starting to equip weapon.");
+            //Debug.Log("Starting to un equip weapon.");
             _startTime = Time.time;
             
-            controller.animator.SetTrigger("PullOutWeapon");
-            controller.animator.SetBool("HasWeaponEquiped", true);
-            
-            controller.weaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
-            controller.weaponHolder.ToggleActiveWeapon(controller.weaponEquiped, true);
+            controller.iKControl.enableHandIk = false;
 
+            controller.animator.SetTrigger("PutAwayWeapon");
+            controller.animator.SetBool("HasWeaponEquiped", false);
+            
+            //controller.weaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
         }
 
         if ((Time.time - _startTime > controller.animator.GetCurrentAnimatorStateInfo(2).length)) //wait til animation is over
         {
-            //Debug.Log("Finished equipping weapon.");
+            //Debug.Log("Finished un equipping weapon.");
 
-            controller.iKControl.enableHandIk = true;
-            
+            controller.weaponHolder.ToggleActiveWeapon(controller.weaponEquiped, false);
+            controller.weaponEquiped = null;
+
             _completed = true;
         }
        

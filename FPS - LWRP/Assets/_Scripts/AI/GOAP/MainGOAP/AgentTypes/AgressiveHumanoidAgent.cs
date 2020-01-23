@@ -27,7 +27,8 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
         worldData.Add(new KeyValuePair<string, object>("inCombat", aiStateController.inCombat));
         worldData.Add(new KeyValuePair<string, object>("hasTarget", aiStateController.target));
         worldData.Add(new KeyValuePair<string, object>("hasWeaponInInventory", aiStateController.aiInventory.HasWeaponInInventory()));
-        worldData.Add(new KeyValuePair<string, object>("weaponEquipAvailable", aiStateController.weaponEquiped == null));
+        //worldData.Add(new KeyValuePair<string, object>("weaponEquipAvailable", aiStateController.weaponEquiped == null));
+        worldData.Add(new KeyValuePair<string, object>("weaponEquiped", aiStateController.weaponEquiped != null));
         worldData.Add(new KeyValuePair<string, object>("isHungry", aiStateController.aiVitals.IsHungry()));
         worldData.Add(new KeyValuePair<string, object>("isThirsty", aiStateController.aiVitals.IsThirsty()));
         //worldData.Add(new KeyValuePair<string, object>("targetAlive", aiStateController.target)); 
@@ -46,6 +47,7 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
         //goalData.Add(new KeyValuePair<string, object>("coverFire", true));
         //goalData.Add(new KeyValuePair<string, object>("throwGrenade", true));
         goalData.Add(new KeyValuePair<string, object>("equipWeapon", true));
+        goalData.Add(new KeyValuePair<string, object>("unEquipWeapon", true));
         //goalData.Add(new KeyValuePair<string, object>("eat", true));
         //goalData.Add(new KeyValuePair<string, object>("drink", true));
         
