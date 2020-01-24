@@ -25,7 +25,7 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
         worldData.Add(new KeyValuePair<string, object>("pickUpAvailable", aiStateController.pickUpAvailable));
         worldData.Add(new KeyValuePair<string, object>("inCombat", aiStateController.inCombat));
-        worldData.Add(new KeyValuePair<string, object>("hasTarget", aiStateController.target));
+        worldData.Add(new KeyValuePair<string, object>("hasTarget", aiStateController.target != null));
         worldData.Add(new KeyValuePair<string, object>("hasWeaponInInventory", aiStateController.aiInventory.HasWeaponInInventory()));
         //worldData.Add(new KeyValuePair<string, object>("weaponEquipAvailable", aiStateController.weaponEquiped == null));
         worldData.Add(new KeyValuePair<string, object>("weaponEquiped", aiStateController.weaponEquiped != null));
@@ -42,6 +42,7 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
         goalData.Add(new KeyValuePair<string, object>("wander", true));
         goalData.Add(new KeyValuePair<string, object>("pickUpItem", true));
+        goalData.Add(new KeyValuePair<string, object>("meleeAttack", true));
         //goalData.Add(new KeyValuePair<string, object>("killTarget", true));
         //goalData.Add(new KeyValuePair<string, object>("attackFromCover", true));
         //goalData.Add(new KeyValuePair<string, object>("coverFire", true));

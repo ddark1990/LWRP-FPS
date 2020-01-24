@@ -54,10 +54,14 @@ public class IKControl : MonoBehaviour
         if (enableFeetIk)
         {
             //set feet weights
-            _animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, _animator.GetFloat(rightFootIk));
-            _animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, _animator.GetFloat(rightFootIk));
-            _animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, _animator.GetFloat(leftFootIk));
-            _animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, _animator.GetFloat(leftFootIk));
+            _animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1);
+            _animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1);
+            _animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1);
+            _animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1);
+            // _animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, _animator.GetFloat(rightFootIk));
+            // _animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, _animator.GetFloat(rightFootIk));
+            // _animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, _animator.GetFloat(leftFootIk));
+            // _animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, _animator.GetFloat(leftFootIk));
 
             //left foot
             RaycastHit hit;
@@ -75,6 +79,8 @@ public class IKControl : MonoBehaviour
                 }
             }
             
+            Debug.DrawRay(ray.origin, ray.direction);
+            
             //right foot
             ray = new Ray(_animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
 
@@ -89,6 +95,8 @@ public class IKControl : MonoBehaviour
                     _animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.FromToRotation(Vector3.up, hit.normal) * transform.rotation);
                 }
             }
+            
+            Debug.DrawRay(ray.origin, ray.direction);
 
         }
     }

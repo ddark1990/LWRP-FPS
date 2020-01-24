@@ -11,8 +11,8 @@ public class MeleeAttackGoapAction : GoapAction
     public MeleeAttackGoapAction()
     {
         addPrecondition("hasTarget", true);
-        addPrecondition("meleeWeaponEquipped", true);
-        addEffect("hasTarget", true);
+        addPrecondition("weaponEquiped", false);
+        addEffect("meleeAttack", true);
     }
 
     public override void reset()
@@ -35,7 +35,7 @@ public class MeleeAttackGoapAction : GoapAction
     {
         // if(!controller.target || controller.aiVitals.isDead) return false;
         //
-        // target = controller.target;
+        target = controller.target;
 
         return true;
     }

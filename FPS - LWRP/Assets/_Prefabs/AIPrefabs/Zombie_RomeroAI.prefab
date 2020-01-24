@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1651907055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1651907056}
+  - component: {fileID: 1651907057}
+  m_Layer: 10
+  m_Name: AiInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1651907056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651907055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3108816062459179351}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651907057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651907055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b401f26dc690650418dfef977ad9be97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdingItems: []
 --- !u!1 &2734058335321975270
 GameObject:
   m_ObjectHideFlags: 0
@@ -3007,6 +3051,7 @@ MonoBehaviour:
   waitMinTime: 1
   waitMaxTime: 5
   wanderRadius: 5
+  showWanderRadius: 0
 --- !u!114 &2734058336266596569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6164,10 +6209,11 @@ GameObject:
   - component: {fileID: 3108816062459179349}
   - component: {fileID: 3108816062459179348}
   - component: {fileID: 3108816062459179355}
-  - component: {fileID: 3108816062459179354}
   - component: {fileID: 3108816062459179353}
   - component: {fileID: 3108816062459179352}
   - component: {fileID: 3108816062459179359}
+  - component: {fileID: 642881497}
+  - component: {fileID: 3108816062459179354}
   m_Layer: 10
   m_Name: Zombie_RomeroAI
   m_TagString: Zombie
@@ -6189,6 +6235,7 @@ Transform:
   - {fileID: 2734058336266596568}
   - {fileID: 2734058335437109030}
   - {fileID: 2734058337427770517}
+  - {fileID: 1651907056}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6239,8 +6286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 0
-  m_StationaryTurnSpeed: 0
+  m_MovingTurnSpeed: 360
+  m_StationaryTurnSpeed: 360
   m_JumpPower: 12
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
@@ -6256,43 +6303,19 @@ NavMeshAgent:
   m_GameObject: {fileID: 3108816062459179358}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.25
   m_Speed: 1
-  m_Acceleration: 8
+  m_Acceleration: 0
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0.6
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.78
+  m_Height: 1.8
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &3108816062459179354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3108816062459179358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
-  distanceFromTarget: 0
-  aiVitals: {fileID: 0}
-  fieldOfView: {fileID: 3108816062459179352}
-  navAgent: {fileID: 0}
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &3108816062459179353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6305,7 +6328,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 100
+  hunger: 100
+  thirst: 100
+  hungerRate: 0.1
+  thirstRate: 0.1
+  hungerThreshold: 25
+  thirstThreshold: 25
   isDead: 0
   ragDollController: {fileID: 2734058337427770523}
 --- !u!114 &3108816062459179352
@@ -6320,12 +6349,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91fb93d583c45c47b2440f0901ab71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleTargets: []
+  resultTargetArr: []
   viewRadius: 5
   viewAngle: 170
   targetMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   meshRes: 0
   edgeResolveIteratons: 0
   edgeDistThreshold: 0
@@ -6345,4 +6374,56 @@ MonoBehaviour:
   actionArr:
   - {fileID: 2734058336266596569}
   - {fileID: 2734058336266596575}
-  aiStateControler: {fileID: 0}
+  aiStateController: {fileID: 0}
+  debugPlanner: 0
+--- !u!114 &642881497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108816062459179358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1ce0067feaee84abf874cbe043c3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableFeetIk: 1
+  enableHandIk: 0
+  leftHandIkPosition: {fileID: 0}
+  rightHandIkPosition: {fileID: 0}
+  distanceToGround: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &3108816062459179354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108816062459179358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  weaponEquiped: {fileID: 0}
+  hasAgro: 0
+  isFeeding: 0
+  isResting: 0
+  isFleeing: 0
+  isIdle: 0
+  isHungry: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  distanceFromTarget: 0
+  aiVitals: {fileID: 0}
+  fieldOfView: {fileID: 3108816062459179352}
+  aiInventory: {fileID: 0}
+  navAgent: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  drawDebugPathLines: 0
