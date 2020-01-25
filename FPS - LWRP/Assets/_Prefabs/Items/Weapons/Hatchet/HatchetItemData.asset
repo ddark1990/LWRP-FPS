@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d28048459150cb47af2bc92ea3d5c3c, type: 3}
+  m_Name: HatchetItemData
+  m_EditorClassIdentifier: 
+  itemData:
+    ItemName: Hatchet
+    ItemDescription: This tool is a must-have for any Rust player. It is the most
+      efficient tool when gathering wood and harvesting animals. Relatively cheap
+      and durable, this tool should be what you aim for in the early stages of the
+      game.
+    ItemSprite: {fileID: 21300000, guid: 3af9b7c76972fd34b82529ba7aa4db2c, type: 3}
+    StackLimit: 1
+  itemSoundData:
+    ActivateItemSound: {fileID: 0}
+    PickUpItemSound: {fileID: 0}
+    ThrowItemSound: {fileID: 0}
+    SelectSounds: []
+    DragSound: {fileID: 0}
+    DropSound: {fileID: 0}
+  weaponSettings:
+    ranged: 0
+    weaponTier: 1
+    RigPrefab: {fileID: 0}
+    meleeDamage: 25
+    meleeAttackRate: 1
+    Automatic: 0
+    ReloadTime: 0
+    RecoilUpKick: 0
+    RecoilSideKick: 0
+    FireRate: 0.1
+    ForceMultiplier: 250
+    BulletPrefab: {fileID: 0}
+    ShellPrefab: {fileID: 0}
+    MaxClipAmmo: 0
+    BulletDamage: 0
+    BulletDrop: 0
+    EquipSound: {fileID: 0}
+    ShootSounds: []
+    ReloadSound: {fileID: 0}
+    animationTriggers: 2

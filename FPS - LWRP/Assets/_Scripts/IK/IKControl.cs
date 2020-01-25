@@ -15,7 +15,8 @@ public class IKControl : MonoBehaviour
     [Header("FootIK")]
     public float distanceToGround = 0.1f;
     public LayerMask groundLayer;
-    
+    [Header("Debug")] 
+    public bool drawDebugRays;
     private Animator _animator;
     private static readonly int rightFootIk = Animator.StringToHash("RightFootIK");
     private static readonly int leftFootIk = Animator.StringToHash("LeftFootIK");
@@ -79,7 +80,8 @@ public class IKControl : MonoBehaviour
                 }
             }
             
-            Debug.DrawRay(ray.origin, ray.direction);
+            if(drawDebugRays)
+                Debug.DrawRay(ray.origin, ray.direction);
             
             //right foot
             ray = new Ray(_animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
@@ -96,7 +98,8 @@ public class IKControl : MonoBehaviour
                 }
             }
             
-            Debug.DrawRay(ray.origin, ray.direction);
+            if(drawDebugRays)
+                Debug.DrawRay(ray.origin, ray.direction);
 
         }
     }

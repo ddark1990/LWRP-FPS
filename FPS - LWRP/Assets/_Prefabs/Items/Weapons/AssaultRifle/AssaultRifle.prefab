@@ -288,7 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3899103668944518993}
   - component: {fileID: 3899103668930817649}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: ak47_MagGrip_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3899103668944479089}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 3899103668944518997}
   - component: {fileID: 3899103668930817653}
   - component: {fileID: 6831321621920264473}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: ak47_Barrel_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3899103668944479093}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 3899103668944518999}
   - component: {fileID: 3899103668930817655}
   - component: {fileID: 7011445049002087137}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: ak47_Body_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3899103668944479095}
   m_Enabled: 1
-  m_CastShadows: 2
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 3899103668944519005}
   - component: {fileID: 3899103668930817651}
   - component: {fileID: 3824219826706665148}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: ak47_stock_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 8444058572475147405}
   - component: {fileID: 151817769127258871}
   - component: {fileID: 6530555719928759911}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: HandleCol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,6 +787,7 @@ GameObject:
   - component: {fileID: 7696486091314993280}
   - component: {fileID: 276380705207002186}
   - component: {fileID: -1184544989798504064}
+  - component: {fileID: 884195536}
   m_Layer: 12
   m_Name: AssaultRifle
   m_TagString: Untagged
@@ -856,6 +857,20 @@ MonoBehaviour:
   maxClipAmmo: 0
   isEmpty: 0
   isReloading: 0
+--- !u!136 &884195536
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5141758157105557290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5141758157196658667
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5141758157196658666}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +916,7 @@ GameObject:
   - component: {fileID: 7872197152115311190}
   - component: {fileID: 3370134657577136144}
   - component: {fileID: 3507271236697829089}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: MagCol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

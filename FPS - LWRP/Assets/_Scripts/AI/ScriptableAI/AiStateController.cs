@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using System;
 using System.Linq;
 using JetBrains.Annotations;
+using NaughtyAttributes;
 using NewAISystem;
 using UnityEngine.Experimental;
 using UnityEngine.Experimental.AI;
@@ -20,14 +21,20 @@ using static AiJobUtil;
 [RequireComponent(typeof(AiVitals))]
 public class AiStateController : MonoBehaviour
 {
+    [Tooltip("Can hold data such as melee damage, str, int, stamina, etc.")] 
+    public AiArchetype aiArchetype;
+    [Header("Focused Target")]
     public Transform target;
-    public Weapon weaponEquiped;
-    
-    public bool hasAgro, isFeeding, isResting, isFleeing, isIdle, isHungry;
-    //goap action states
-    public bool pickUpAvailable, inCombat;
-
     public float distanceFromTarget;
+    [Header("Equiped Weapons")]
+    public Weapon rangedWeaponEquiped;
+    public Weapon meleeWeaponEquiped;
+
+    [Header("States")] 
+    public bool hasAgro;
+    //goap action states
+    public bool pickUpAvailable;
+    public bool inCombat;
 
     [HideInInspector] public AiVitals aiVitals;
     [HideInInspector] public FieldOfView fieldOfView;
@@ -122,9 +129,8 @@ public class AiStateController : MonoBehaviour
         // var head = animator.GetBoneTransform(HumanBodyBones.Head);
         // var lookRotation = Quaternion.LookRotation (target.position - head.position);
         // head.rotation *= lookRotation;
-        
-        
     }
+    
     public Collider[] GetMeleeHitTargets(Collider[] outPutArray, Vector3 hitPoint, float meleeRange, int numOfAllowedHits, LayerMask hitLayer)
     {
         if (outPutArray == null)
@@ -162,8 +168,8 @@ public class AiStateController : MonoBehaviour
             {
                 var targetVitals = hit.GetComponent<AiVitals>();
 
-                targetVitals.TakeDamage(10);
-                Debug.Log("Hit " + hit.name);
+                targetVitals.TakeDamage(aiArchetype.combatData.meleeDamage);
+                //Debug.Log("Hit " + hit.name);
             }
         }
         Array.Clear(targetMeleeArr, 0, 1);

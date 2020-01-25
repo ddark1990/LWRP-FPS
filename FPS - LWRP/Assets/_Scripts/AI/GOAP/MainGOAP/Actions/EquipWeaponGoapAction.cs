@@ -45,11 +45,26 @@ public class EquipWeaponGoapAction : GoapAction
             //Debug.Log("Starting to equip weapon.");
             _startTime = Time.time;
             
-            controller.animator.SetTrigger("PullOutWeapon");
-            controller.animator.SetBool("HasWeaponEquiped", true);
             
-            controller.weaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
-            controller.weaponHolder.ToggleActiveWeapon(controller.weaponEquiped, true);
+            var bestWeapon = controller.aiInventory.GetBestWeaponFromInventory(); //get the best weapon we have in the inventory
+
+            if (bestWeapon.weaponSettings.ranged) //choose the correct animations based on the type of weapon we have equiped
+            {
+                controller.rangedWeaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
+                
+                controller.weaponHolder.ToggleActiveWeapon(controller.rangedWeaponEquiped, true);
+                controller.animator.SetTrigger(controller.rangedWeaponEquiped.weaponSettings.animationTriggers.ToString()); //should be pull out rifle, and have a separate for pistols
+                controller.animator.SetBool("HasWeaponEquiped", true);
+            }
+            else
+            {
+                controller.meleeWeaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
+                
+                controller.weaponHolder.ToggleActiveWeapon(controller.meleeWeaponEquiped, true);
+                controller.animator.SetTrigger(controller.meleeWeaponEquiped.weaponSettings.animationTriggers.ToString());
+                controller.animator.SetBool("HasWeaponEquiped", true);
+            }
+            
 
         }
 

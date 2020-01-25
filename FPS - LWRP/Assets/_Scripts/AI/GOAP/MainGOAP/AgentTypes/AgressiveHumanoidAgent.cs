@@ -30,7 +30,7 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
         worldData.Add(new KeyValuePair<string, object>("hasTarget", aiStateController.target != null));
         worldData.Add(new KeyValuePair<string, object>("hasWeaponInInventory", aiStateController.aiInventory.HasWeaponInInventory()));
         //worldData.Add(new KeyValuePair<string, object>("weaponEquipAvailable", aiStateController.weaponEquiped == null));
-        worldData.Add(new KeyValuePair<string, object>("weaponEquiped", aiStateController.weaponEquiped != null));
+        worldData.Add(new KeyValuePair<string, object>("weaponEquiped", aiStateController.rangedWeaponEquiped != null));
         worldData.Add(new KeyValuePair<string, object>("isHungry", aiStateController.aiVitals.IsHungry()));
         worldData.Add(new KeyValuePair<string, object>("isThirsty", aiStateController.aiVitals.IsThirsty()));
         //worldData.Add(new KeyValuePair<string, object>("targetAlive", aiStateController.target)); 

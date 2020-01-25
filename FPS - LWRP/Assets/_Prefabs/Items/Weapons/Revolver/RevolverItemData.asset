@@ -25,7 +25,7 @@ MonoBehaviour:
     ItemSprite: {fileID: 21300000, guid: f0abbe9cc8c5ea24fb613424098b7de4, type: 3}
     StackLimit: 1
   itemSoundData:
-    UseItemSound: {fileID: 0}
+    ActivateItemSound: {fileID: 0}
     PickUpItemSound: {fileID: 8300000, guid: e03bdf620cb731f4185fff166107d76d, type: 3}
     ThrowItemSound: {fileID: 8300000, guid: cd7c93d5224bef74c899b4c3b7390d9c, type: 3}
     SelectSounds:
@@ -36,8 +36,12 @@ MonoBehaviour:
     DragSound: {fileID: 8300000, guid: 9670aa1e470f26f4b8f44d6cf7470fb9, type: 3}
     DropSound: {fileID: 8300000, guid: 18419ed242a2764409f26a3d65a1e69d, type: 3}
   weaponSettings:
+    ranged: 0
+    weaponTier: 0
     RigPrefab: {fileID: 3601285753170626396, guid: 2eaa56b7af034384cba06652a898106d,
       type: 3}
+    meleeDamage: 0
+    meleeAttackRate: 0
     Automatic: 0
     ReloadTime: 5
     RecoilUpKick: 1
@@ -55,3 +59,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 85ca42f0dfd72424a84a1669cbcd53b9, type: 3}
     - {fileID: 8300000, guid: 19d0c1e9d4d708a44820dae0313e5bdf, type: 3}
     ReloadSound: {fileID: 8300000, guid: bc8d25a26ad381d4d99b2063c4f0c8f5, type: 3}
+    animationTriggers: 0

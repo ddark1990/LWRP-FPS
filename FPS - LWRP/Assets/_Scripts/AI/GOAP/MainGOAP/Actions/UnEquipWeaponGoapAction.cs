@@ -56,8 +56,8 @@ public class UnEquipWeaponGoapAction : GoapAction
         {
             //Debug.Log("Finished un equipping weapon.");
 
-            controller.weaponHolder.ToggleActiveWeapon(controller.weaponEquiped, false);
-            controller.weaponEquiped = null;
+            controller.weaponHolder.ToggleActiveWeapon(controller.rangedWeaponEquiped, false);
+            controller.rangedWeaponEquiped = null;
 
             _completed = true;
         }

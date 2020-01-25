@@ -6,12 +6,28 @@ using System;
 [CreateAssetMenu(fileName = "WeaponItem", menuName = "Create Item/Item Type/Weapon", order = 1)]
 public class Weapon : ItemType
 {
+    
     [Serializable]
     public struct WeaponSettings
     {
-        public byte weaponTier;
-        public GameObject RigPrefab;
+        public enum AnimationTriggers
+        {
+            PullOutPistol,
+            PullOutRifle,
+            PullOutMeleeWeapon
+        }
 
+        public bool ranged;
+        [Range(0,3)] public byte weaponTier;
+        
+        [Header("Rig Settings")]
+        public GameObject RigPrefab;
+        
+        [Header("Melee Settings")] 
+        public float meleeDamage;
+        public float meleeAttackRate;
+        
+        [Header("Ranged Settings")]
         public bool Automatic;
         [Range(0, 10)] public float ReloadTime;
         [Range(0, 20)] public float RecoilUpKick;
@@ -30,6 +46,12 @@ public class Weapon : ItemType
         public AudioClip EquipSound;
         public AudioClip[] ShootSounds;
         public AudioClip ReloadSound;
+
+        [Header("Animation Settings")]
+        
+        public AnimationTriggers animationTriggers; //could take the manual route and type a string in, or have a enum dropdown for convenience 
+        //public string animationTrigger;
+
     }
 
     public WeaponSettings weaponSettings;

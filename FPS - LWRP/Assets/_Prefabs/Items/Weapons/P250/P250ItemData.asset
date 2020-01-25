@@ -33,9 +33,12 @@ MonoBehaviour:
     DragSound: {fileID: 8300000, guid: 9670aa1e470f26f4b8f44d6cf7470fb9, type: 3}
     DropSound: {fileID: 8300000, guid: 18419ed242a2764409f26a3d65a1e69d, type: 3}
   weaponSettings:
+    ranged: 0
     weaponTier: 2
     RigPrefab: {fileID: 461864633970784320, guid: a28383484d14d4f4a94829912062efc6,
       type: 3}
+    meleeDamage: 0
+    meleeAttackRate: 0
     Automatic: 0
     ReloadTime: 5
     RecoilUpKick: 1
@@ -56,3 +59,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 6627c2b7c9dcb2349b21c06ef7969c8e, type: 3}
     - {fileID: 8300000, guid: 07fdadc77bdcdbf488a3e0de14db6c40, type: 3}
     ReloadSound: {fileID: 0}
+    animationTriggers: 0

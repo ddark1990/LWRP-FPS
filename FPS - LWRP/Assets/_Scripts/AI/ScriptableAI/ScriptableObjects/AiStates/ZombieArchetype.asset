@@ -12,20 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c262d4a635aec6948a9f29b99773c6f9, type: 3}
   m_Name: ZombieArchetype
   m_EditorClassIdentifier: 
-  behaviourType: 2
-  defaultBehaviour: 7
-  wanderData:
-    RadiusSizes:
-      x: 5
-      y: 15
-      z: 25
-    WaitTime: 2
   fovData:
-    MaxAgroRadius: 12.5
-    MaxViewAngle: 160
+    maxAgroRadius: 0
+    maxViewAngle: 0
   combatData:
-    MeleeDamage: 20
-    MeleeDistance: 1.2
-  ableData:
-    AbleToFeed: 0
-    AbleToRest: 0
+    meleeDamage: 10
+    meleeDistance: 0
