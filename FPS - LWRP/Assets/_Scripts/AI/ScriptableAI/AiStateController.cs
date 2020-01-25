@@ -158,16 +158,17 @@ public class AiStateController : MonoBehaviour
         
         foreach (var hit in targetMeleeArr)
         {
-            if (hit.transform != transform.root)
+            if (hit != null && hit.transform != transform.root)
             {
                 var targetVitals = hit.GetComponent<AiVitals>();
 
                 targetVitals.TakeDamage(10);
-                Debug.Log(hit);
+                //Debug.Log("Hit " + hit.name);
             }
         }
-        //targetMeleeArr = null;
+        Array.Clear(targetMeleeArr, 0, 1);
     }
+    
     public Item FindClosestItemInCollection(Collider[] visibleTargets, Transform compareTo) // jobify
     {
         if (visibleTargets.Length == 0) return null;

@@ -396,7 +396,7 @@ MonoBehaviour:
   iKControl: {fileID: 0}
   animator: {fileID: 0}
   drawDebugPathLines: 1
-  targetMeleeArr: []
+  meleeDebug: 0
   hitLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -404,6 +404,7 @@ MonoBehaviour:
   sideControl: 0
   heightControl: 1
   distanceControl: 0.2
+  targetMeleeArr: []
 --- !u!114 &81982955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +580,7 @@ MonoBehaviour:
   iKControl: {fileID: 0}
   animator: {fileID: 0}
   drawDebugPathLines: 1
-  targetMeleeArr: []
+  meleeDebug: 0
   hitLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -587,6 +588,7 @@ MonoBehaviour:
   sideControl: 0
   heightControl: 1
   distanceControl: 0.2
+  targetMeleeArr: []
 --- !u!114 &152389533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,7 +1696,7 @@ MonoBehaviour:
   iKControl: {fileID: 0}
   animator: {fileID: 0}
   drawDebugPathLines: 1
-  targetMeleeArr: []
+  meleeDebug: 0
   hitLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -1702,6 +1704,7 @@ MonoBehaviour:
   sideControl: 0
   heightControl: 1
   distanceControl: 0.2
+  targetMeleeArr: []
 --- !u!114 &601441875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2686,7 +2689,7 @@ MonoBehaviour:
   iKControl: {fileID: 0}
   animator: {fileID: 0}
   drawDebugPathLines: 1
-  targetMeleeArr: []
+  meleeDebug: 0
   hitLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -2694,6 +2697,7 @@ MonoBehaviour:
   sideControl: 0
   heightControl: 1
   distanceControl: 0.2
+  targetMeleeArr: []
 --- !u!114 &735412260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4849,7 +4853,7 @@ MonoBehaviour:
   iKControl: {fileID: 0}
   animator: {fileID: 0}
   drawDebugPathLines: 1
-  targetMeleeArr: []
+  meleeDebug: 0
   hitLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -4857,6 +4861,7 @@ MonoBehaviour:
   sideControl: 0
   heightControl: 1
   distanceControl: 0.2
+  targetMeleeArr: []
 --- !u!114 &1060871629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6952,7 +6957,7 @@ MonoBehaviour:
   iKControl: {fileID: 0}
   animator: {fileID: 0}
   drawDebugPathLines: 1
-  targetMeleeArr: []
+  meleeDebug: 0
   hitLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -6960,6 +6965,7 @@ MonoBehaviour:
   sideControl: 0
   heightControl: 1
   distanceControl: 0.2
+  targetMeleeArr: []
 --- !u!114 &1710820096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8272,7 +8278,7 @@ PrefabInstance:
     - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.061
+      value: 28.934
       objectReference: {fileID: 0}
     - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
         type: 3}
@@ -8358,6 +8364,16 @@ PrefabInstance:
         type: 3}
       propertyPath: hitLayer.m_Bits
       value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179354, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: meleeDebug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179354, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: sideControl
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3108816062459179355, guid: da3dd297abe410f40a257ca9659dda3b,
         type: 3}
@@ -11403,7 +11419,7 @@ MonoBehaviour:
   iKControl: {fileID: 0}
   animator: {fileID: 0}
   drawDebugPathLines: 1
-  targetMeleeArr: []
+  meleeDebug: 0
   hitLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -11411,6 +11427,7 @@ MonoBehaviour:
   sideControl: 0
   heightControl: 1
   distanceControl: 0.2
+  targetMeleeArr: []
 --- !u!114 &7965570806535433350
 MonoBehaviour:
   m_ObjectHideFlags: 0
