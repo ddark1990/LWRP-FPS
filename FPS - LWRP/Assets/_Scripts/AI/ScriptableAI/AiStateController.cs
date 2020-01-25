@@ -148,22 +148,22 @@ public class AiStateController : MonoBehaviour
     
     [HideInInspector] public Collider[] targetMeleeArr;
 
-    public void GetMeleeHitTarget() //used by animation events for melee attacks
+    public void GetMeleeHitTarget() //used by animation events for melee attacks *move into animation events container inside the animation controller for characters
     {
         if(targetMeleeArr.Length == 0)
             targetMeleeArr = new Collider[1];
         
-        Physics.OverlapSphereNonAlloc(transform.position + new Vector3(sideControl,heightControl,distanceControl), 
-            meleeRadiusRange, targetMeleeArr, hitLayer);
+        Physics.OverlapSphereNonAlloc(transform.localPosition + transform.TransformDirection(new Vector3(sideControl,heightControl,distanceControl)), 
+            meleeRadiusRange, targetMeleeArr, hitLayer); //do a "non allocating" sphere check
         
         foreach (var hit in targetMeleeArr)
         {
-            if (hit != null && hit.transform != transform.root)
+            if (hit != null && hit.transform != transform.root) //if we hit something
             {
                 var targetVitals = hit.GetComponent<AiVitals>();
 
                 targetVitals.TakeDamage(10);
-                //Debug.Log("Hit " + hit.name);
+                Debug.Log("Hit " + hit.name);
             }
         }
         Array.Clear(targetMeleeArr, 0, 1);
@@ -209,7 +209,7 @@ public class AiStateController : MonoBehaviour
         if (meleeDebug)
         {
             Gizmos.color = new Color(1f, 0.31f, 0.23f);
-            Gizmos.DrawWireSphere(transform.position + new Vector3(sideControl,heightControl,distanceControl), meleeRadiusRange); //melee sphere range/radius
+            Gizmos.DrawWireSphere(transform.position + transform.TransformDirection(new Vector3(sideControl,heightControl,distanceControl)), meleeRadiusRange); //melee sphere range/radius
         }
     }
 }
