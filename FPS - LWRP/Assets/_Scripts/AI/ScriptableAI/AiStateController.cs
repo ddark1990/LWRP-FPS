@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 using NewAISystem;
 using UnityEngine.Experimental;
 using UnityEngine.Experimental.AI;
@@ -116,6 +117,57 @@ public class AiStateController : MonoBehaviour
         return new Vector3(UnityEngine.Random.insideUnitCircle.x, 0, UnityEngine.Random.insideUnitCircle.y);
     }
 
+    private void LookAtTarget()
+    {
+        // var head = animator.GetBoneTransform(HumanBodyBones.Head);
+        // var lookRotation = Quaternion.LookRotation (target.position - head.position);
+        // head.rotation *= lookRotation;
+        
+        
+    }
+    public Collider[] GetMeleeHitTargets(Collider[] outPutArray, Vector3 hitPoint, float meleeRange, int numOfAllowedHits, LayerMask hitLayer)
+    {
+        if (outPutArray == null)
+            throw new ArgumentNullException(nameof(outPutArray)); //null check on array cuz it is very much so required
+        
+        outPutArray = new Collider[numOfAllowedHits];
+        
+        var targetsHit = Physics.OverlapSphereNonAlloc(hitPoint, meleeRange, outPutArray, hitLayer);
+        
+        return outPutArray;
+    }
+
+    [Header("Melee Settings")] 
+    public bool meleeDebug;
+    public LayerMask hitLayer;
+    public float meleeRadiusRange = 0.25f;
+
+    public float sideControl;
+    public float heightControl = 1.25f;
+    public float distanceControl = 0.7f;
+    
+    [HideInInspector] public Collider[] targetMeleeArr;
+
+    public void GetMeleeHitTarget() //used by animation events for melee attacks
+    {
+        if(targetMeleeArr.Length == 0)
+            targetMeleeArr = new Collider[1];
+        
+        Physics.OverlapSphereNonAlloc(transform.position + new Vector3(sideControl,heightControl,distanceControl), 
+            meleeRadiusRange, targetMeleeArr, hitLayer);
+        
+        foreach (var hit in targetMeleeArr)
+        {
+            if (hit.transform != transform.root)
+            {
+                var targetVitals = hit.GetComponent<AiVitals>();
+
+                targetVitals.TakeDamage(10);
+                Debug.Log(hit);
+            }
+        }
+        //targetMeleeArr = null;
+    }
     public Item FindClosestItemInCollection(Collider[] visibleTargets, Transform compareTo) // jobify
     {
         if (visibleTargets.Length == 0) return null;
@@ -151,4 +203,12 @@ public class AiStateController : MonoBehaviour
     }
     #endregion
     
+    private void OnDrawGizmosSelected()
+    {
+        if (meleeDebug)
+        {
+            Gizmos.color = new Color(1f, 0.31f, 0.23f);
+            Gizmos.DrawWireSphere(transform.position + new Vector3(sideControl,heightControl,distanceControl), meleeRadiusRange); //melee sphere range/radius
+        }
+    }
 }

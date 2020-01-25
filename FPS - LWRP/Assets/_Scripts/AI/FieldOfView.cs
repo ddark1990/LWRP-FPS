@@ -86,13 +86,14 @@ public class FieldOfView : MonoBehaviour
             // if(target != transform)
             //     visibleTargets.Add(target);
 
-            // if(visibleTargets.Count > 0 && !_foundTarget) 
-            // {
-            //     _foundTarget = true;
-            //     
-            //     targetInViewEvent(target); //found target
-            //     Debug.Log(target.name + " In View");
-            // }
+            if(!_foundTarget && target != transform) //if we see a target
+            {
+                _aiStateController.target = target;
+                _foundTarget = true;
+                
+                //targetInViewEvent(target); //found target
+                Debug.Log(target.name + " In View", this);
+            }
 
             //Debug.DrawLine(transform.position + new Vector3(0, testfloat, 0), focus.position + new Vector3(0, testfloat, 0), Color.green);
         }

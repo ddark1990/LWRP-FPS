@@ -47,6 +47,7 @@ public class PickUpItemGoapAction : GoapAction
     
     public override bool perform(AiStateController controller)
     {
+        Debug.Log(controller.animator.GetCurrentAnimatorStateInfo(1).length);
         if (_startTime == 0)
         {
             _targetItem = target.GetComponent<Item>();

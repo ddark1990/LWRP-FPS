@@ -6,6 +6,12 @@ ModelImporter:
   - first:
       74: -203655887218126122
     second: WalkingAgro
+  - first:
+      74: -5625576970138490846
+    second: WalkingAgroRightTurn
+  - first:
+      74: 1339821681614992396
+    second: WalkingAgroLeftTurn
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -19,6 +19,7 @@ public class WanderGoapAction : GoapAction
 
     public WanderGoapAction()
     {
+        addPrecondition("hasTarget", false);
         addPrecondition("pickUpAvailable", false);
         addPrecondition("inCombat", false);
         addEffect("wander", true);
@@ -48,7 +49,7 @@ public class WanderGoapAction : GoapAction
 
     public override bool perform(AiStateController controller)
     {
-        if (controller.pickUpAvailable) return false;
+        if (controller.pickUpAvailable || controller.target) return false;
         
         if (_elapsedTime == 0 && !controller.navAgent.hasPath)
         {

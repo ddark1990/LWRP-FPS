@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class AgressiveHumanoidAgent : GoapAgent, IGoap
 {
+    public bool goalDebug;
+    
     private Vector3 previousDestination;
     private HashSet<KeyValuePair<string, object>> worldData;
     private HashSet<KeyValuePair<string, object>> goalData;
@@ -66,13 +68,13 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
     public void planFound(HashSet<KeyValuePair<string,object>> goal, Queue<GoapAction> actions)
     {
         // Yay we found a plan for our goal
-        //Debug.Log("<color=green>Plan found</color> " + GoapAgent.prettyPrint(actions));
+        if(goalDebug) Debug.Log("<color=green>Plan found</color> " + GoapAgent.prettyPrint(actions));
     }
 
     public void actionsFinished()
     {
         // Everything is done, we completed our actions for this gool. Hooray!
-        //Debug.Log("<color=blue>Actions completed</color>");
+        if(goalDebug) Debug.Log("<color=blue>Actions completed</color>");
     }
 
     public void planAborted(GoapAction aborter)
@@ -80,7 +82,7 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
         // An action bailed out of the plan. State has been reset to plan again.
         // Take note of what happened and make sure if you run the same goal again
         // that it can succeed.
-        //Debug.Log("<color=red>Plan Aborted</color> " + GoapAgent.prettyPrint(aborter));
+        if(goalDebug) Debug.Log("<color=red>Plan Aborted</color> " + GoapAgent.prettyPrint(aborter));
     }
 
     public bool moveAgent(GoapAction nextAction)
@@ -108,11 +110,11 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
     private void FixedUpdate()
     {
-        // if (aiStateController.navAgent.hasPath)
-        // {
-        //     var toTarget = aiStateController.navAgent.steeringTarget - transform.position;
-        //     var turnAngle = Vector3.Angle(transform.forward, toTarget);
-        //     aiStateController.navAgent.acceleration = turnAngle * aiStateController.navAgent.speed;
-        // }
+        if (aiStateController.target)
+        {
+            var toTarget = aiStateController.target.position - transform.position;
+            var turnAngle = Vector3.Angle(transform.forward, toTarget);
+            aiStateController.navAgent.acceleration = turnAngle * aiStateController.navAgent.speed;
+        }
     }
 }

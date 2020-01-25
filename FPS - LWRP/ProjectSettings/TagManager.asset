@@ -42,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - BodyPart
   - PostProcessing
   - AiSensor
   m_SortingLayers:
