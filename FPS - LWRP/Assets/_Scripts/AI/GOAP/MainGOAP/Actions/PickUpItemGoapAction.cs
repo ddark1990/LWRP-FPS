@@ -11,6 +11,7 @@ public class PickUpItemGoapAction : GoapAction
     private float _startTime;
     private bool _completed;
     private Item _targetItem;
+    private static readonly int pickUpItem = Animator.StringToHash("PickUpItem");
 
     public PickUpItemGoapAction()
     {
@@ -55,7 +56,7 @@ public class PickUpItemGoapAction : GoapAction
             //Debug.Log("Starting to pick up item.");
             
             _startTime = Time.time;
-            controller.animator.SetTrigger("PickUpItem");
+            controller.animator.SetTrigger(pickUpItem);
         }
 
         if ((Time.time - _startTime > controller.animator.GetCurrentAnimatorStateInfo(1).length + extraWaitTime)) //wait til animation is over
