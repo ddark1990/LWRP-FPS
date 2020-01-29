@@ -6,15 +6,20 @@ using System;
 [CreateAssetMenu(fileName = "WeaponItem", menuName = "Create Item/Item Type/Weapon", order = 1)]
 public class Weapon : ItemType
 {
-    
     [Serializable]
     public struct WeaponSettings
     {
         public enum AnimationTriggers
         {
-            PullOutPistol,
-            PullOutRifle,
-            PullOutMeleeWeapon
+            EquipPistol,
+            EquipRifle,
+            EquipMeleeWeapon
+        }
+        public enum WeaponTags
+        {
+            SingleHanded,
+            Pistol,
+            Rifle
         }
 
         public bool ranged;
@@ -50,6 +55,8 @@ public class Weapon : ItemType
         [Header("Animation Settings")]
         
         public AnimationTriggers animationTriggers; //could take the manual route and type a string in, or have a enum dropdown for convenience 
+        public WeaponTags weaponTags; //to help select correct animations in controller
+
         //public string animationTrigger;
 
     }

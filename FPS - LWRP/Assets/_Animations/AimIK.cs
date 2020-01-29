@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
+//Rotates the chest to the target ignoring the X value when moving closer to target so he doesnt rotate the chest down
 public class AimIK : MonoBehaviour
 {
     public Transform targetIk;
-    public Vector3 offSetVector;
-    public float damping = 1;
+    public Vector3 rotationOffset;
 
     private Animator _anim;
     private Transform _chest;
-    private Quaternion _chestRotation;
 
     private void Start()
     {
@@ -26,7 +25,7 @@ public class AimIK : MonoBehaviour
         var position = targetIk.position;
         
         _chest.LookAt(new Vector3(position.x, _chest.position.y, position.z));
-        _chest.rotation *= Quaternion.Euler(offSetVector);
+        _chest.rotation *= Quaternion.Euler(rotationOffset);
         
     }
 }

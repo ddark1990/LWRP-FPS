@@ -36,7 +36,7 @@ MonoBehaviour:
     DragSound: {fileID: 8300000, guid: 9670aa1e470f26f4b8f44d6cf7470fb9, type: 3}
     DropSound: {fileID: 8300000, guid: 18419ed242a2764409f26a3d65a1e69d, type: 3}
   weaponSettings:
-    ranged: 0
+    ranged: 1
     weaponTier: 0
     RigPrefab: {fileID: 3601285753170626396, guid: 2eaa56b7af034384cba06652a898106d,
       type: 3}
@@ -60,3 +60,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 19d0c1e9d4d708a44820dae0313e5bdf, type: 3}
     ReloadSound: {fileID: 8300000, guid: bc8d25a26ad381d4d99b2063c4f0c8f5, type: 3}
     animationTriggers: 0
+    weaponTags: 1

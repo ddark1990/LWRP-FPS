@@ -58,3 +58,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1e8b42a65761e7c4db41912be2d00df7, type: 3}
     ReloadSound: {fileID: 8300000, guid: 430dec58400e8b64d882b497fe411b7f, type: 3}
     animationTriggers: 1
+    weaponTags: 2

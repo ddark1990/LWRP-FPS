@@ -35,7 +35,8 @@ public class AiStateController : MonoBehaviour
     //goap action states
     public bool pickUpAvailable;
     public bool inCombat;
-
+    public bool hasTargetFocus;
+    
     [HideInInspector] public AiVitals aiVitals;
     [HideInInspector] public FieldOfView fieldOfView;
     [HideInInspector] public GenericInventory aiInventory;
@@ -79,6 +80,10 @@ public class AiStateController : MonoBehaviour
 
     private void Update()
     {
+        if (hasTargetFocus)
+        {
+            LookAtTarget(); //turns whole body and keeps it rotated toward the target 
+        }
         if (!drawDebugPathLines) return;
         DrawCornerLines(navAgent.path.corners);
     }
@@ -123,13 +128,15 @@ public class AiStateController : MonoBehaviour
     {
         return new Vector3(UnityEngine.Random.insideUnitCircle.x, 0, UnityEngine.Random.insideUnitCircle.y);
     }
+    [SerializeField] private float rotationSpeed = 20;
 
     private void LookAtTarget()
     {
-        // var head = animator.GetBoneTransform(HumanBodyBones.Head);
-        // var lookRotation = Quaternion.LookRotation (target.position - head.position);
-        // head.rotation *= lookRotation;
-    }
+        var forward = target.transform.position - transform.position;
+        forward.y = 0f;
+        var lookRot = Quaternion.LookRotation(forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * rotationSpeed);
+    } 
     
     public Collider[] GetMeleeHitTargets(Collider[] outPutArray, Vector3 hitPoint, float meleeRange, int numOfAllowedHits, LayerMask hitLayer)
     {

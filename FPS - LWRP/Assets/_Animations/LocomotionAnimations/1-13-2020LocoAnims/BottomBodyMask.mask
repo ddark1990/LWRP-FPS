@@ -6,6 +6,6 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Test_BottomBodyMask
+  m_Name: BottomBodyMask
   m_Mask: 01000000000000000000000001000000010000000000000000000000000000000000000001000000010000000000000000000000
   m_Elements: []
