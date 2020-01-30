@@ -15,7 +15,7 @@ public class MeleeAttackGoapAction : GoapAction
     public MeleeAttackGoapAction()
     {
         addPrecondition("hasTarget", true);
-        addPrecondition("weaponEquiped", false);
+        //addPrecondition("weaponEquiped", false);
         addEffect("meleeAttack", true);
     }
 

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: a3d107524998bc440b3bf61835599330
+guid: 8da9f580b4fcfa4428098d8f55fbec0d
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: RifleWalkForward
+    second: RifleWalkForwardRight
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,13 +35,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: RifleWalkForward
+      name: RifleWalkForwardRight
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
-      orientationOffsetY: -31.89
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
@@ -51,7 +51,7 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
       heightFromFeet: 1
