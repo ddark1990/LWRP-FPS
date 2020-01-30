@@ -395,6 +395,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   drawDebugPathLines: 1
   rotationSpeed: 20
+  destForward: {x: 0, y: 0, z: 0}
+  negForward: {x: 0, y: 0, z: 0}
+  valueFloat: 0
+  valueFloat2: 0
   meleeDebug: 0
   hitLayer:
     serializedVersion: 2
@@ -578,6 +582,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   drawDebugPathLines: 1
   rotationSpeed: 20
+  destForward: {x: 0, y: 0, z: 0}
+  negForward: {x: 0, y: 0, z: 0}
+  valueFloat: 0
+  valueFloat2: 0
   meleeDebug: 0
   hitLayer:
     serializedVersion: 2
@@ -1805,6 +1813,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   drawDebugPathLines: 1
   rotationSpeed: 20
+  destForward: {x: 0, y: 0, z: 0}
+  negForward: {x: 0, y: 0, z: 0}
+  valueFloat: 0
+  valueFloat2: 0
   meleeDebug: 0
   hitLayer:
     serializedVersion: 2
@@ -2747,6 +2759,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   drawDebugPathLines: 1
   rotationSpeed: 20
+  destForward: {x: 0, y: 0, z: 0}
+  negForward: {x: 0, y: 0, z: 0}
+  valueFloat: 0
+  valueFloat2: 0
   meleeDebug: 0
   hitLayer:
     serializedVersion: 2
@@ -5002,6 +5018,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   drawDebugPathLines: 1
   rotationSpeed: 20
+  destForward: {x: 0, y: 0, z: 0}
+  negForward: {x: 0, y: 0, z: 0}
+  valueFloat: 0
+  valueFloat2: 0
   meleeDebug: 0
   hitLayer:
     serializedVersion: 2
@@ -7180,6 +7200,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   drawDebugPathLines: 1
   rotationSpeed: 20
+  destForward: {x: 0, y: 0, z: 0}
+  negForward: {x: 0, y: 0, z: 0}
+  valueFloat: 0
+  valueFloat2: 0
   meleeDebug: 0
   hitLayer:
     serializedVersion: 2
@@ -11741,6 +11765,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2036207232, guid: e1654d7648c858a4bafe4f95a21267fc, type: 3}
+      propertyPath: enableFeetIk
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2036207234, guid: e1654d7648c858a4bafe4f95a21267fc, type: 3}
       propertyPath: m_MovingTurnSpeed
       value: 360
@@ -11902,6 +11930,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   drawDebugPathLines: 1
   rotationSpeed: 20
+  destForward: {x: 0, y: 0, z: 0}
+  negForward: {x: 0, y: 0, z: 0}
+  valueFloat: 0
+  valueFloat2: 0
   meleeDebug: 0
   hitLayer:
     serializedVersion: 2

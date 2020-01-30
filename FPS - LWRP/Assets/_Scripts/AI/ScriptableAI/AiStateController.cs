@@ -130,12 +130,32 @@ public class AiStateController : MonoBehaviour
     }
     [SerializeField] private float rotationSpeed = 20;
 
+    public Vector3 destForward;
+    public Vector3 negForward;
+    public float valueFloat;
+    public float valueFloat2;
     private void LookAtTarget()
     {
+        var towardsDest = (navAgent.destination - transform.position).normalized;
+        destForward = (navAgent.destination - target.position).normalized;
+        negForward = -transform.forward.normalized;
+        valueFloat = Mathf.Round(destForward.z * 100f) / 100f;
+        valueFloat2 = Mathf.Round(negForward.z * 100f) / 100f;;
         var forward = target.transform.position - transform.position;
         forward.y = 0f;
         var lookRot = Quaternion.LookRotation(forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * rotationSpeed);
+        transform.rotation = lookRot;
+
+        if (valueFloat == valueFloat2)
+        {
+            animator.SetFloat("Turn", 0);
+            Debug.Log("TURNED BUTTERS");
+        }
+        //Debug.Log(destForward);
+        
+        Debug.DrawRay(animator.rootPosition + Vector3.up, destForward);
+        Debug.DrawRay(animator.rootPosition + new Vector3(0,.5f,0), -transform.forward, Color.red);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * rotationSpeed);
     } 
     
     public Collider[] GetMeleeHitTargets(Collider[] outPutArray, Vector3 hitPoint, float meleeRange, int numOfAllowedHits, LayerMask hitLayer)
