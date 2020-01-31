@@ -8,10 +8,10 @@ public class AimIK : MonoBehaviour
 {
     public Transform targetIk;
     public Vector3 rotationOffset;
-
+    
     private Animator _anim;
     private Transform _chest;
-
+    
     private void Start()
     {
         _anim = GetComponent<Animator>();
@@ -21,11 +21,10 @@ public class AimIK : MonoBehaviour
     private void LateUpdate()
     {
         if (!targetIk) return;
-
-        var position = targetIk.position;
         
-        _chest.LookAt(new Vector3(position.x, _chest.position.y, position.z));
+        var lookAtPosition = new Vector3(targetIk.position.x, _chest.position.y, targetIk.position.z);
+        
+        _chest.LookAt(lookAtPosition);
         _chest.rotation *= Quaternion.Euler(rotationOffset);
-        
     }
 }

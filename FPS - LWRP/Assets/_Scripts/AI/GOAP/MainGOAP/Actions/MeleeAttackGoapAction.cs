@@ -43,7 +43,7 @@ public class MeleeAttackGoapAction : GoapAction
         return true;
     }
     
-    public override bool perform(AiStateController controller)
+    public override bool perform(AiStateController controller) //activates animation which holds an event that gives all hits
     {
         if (startTime == 0f)
         {

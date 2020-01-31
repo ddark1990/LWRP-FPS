@@ -110,11 +110,11 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
     private void FixedUpdate()
     {
-        if (aiStateController.target)
-        {
-            var toTarget = aiStateController.target.position - transform.position;
-            var turnAngle = Vector3.Angle(transform.forward, toTarget);
-            aiStateController.navAgent.acceleration = turnAngle * aiStateController.navAgent.speed;
-        }
+        // if (aiStateController.target)
+        // {
+        //     var toTarget = aiStateController.target.position - transform.position;
+        //     var turnAngle = Vector3.Angle(transform.forward, toTarget);
+        //     aiStateController.navAgent.acceleration = turnAngle * aiStateController.navAgent.speed;
+        // }
     }
 }

@@ -14,6 +14,7 @@ using Unity.Burst;
 using Unity.Mathematics;
 using Unity.Collections;
 using UnityEngine.Jobs;
+using UnityStandardAssets.Characters.ThirdPerson;
 using static AiJobUtil;
 
 [RequireComponent(typeof(Animator))]
@@ -44,6 +45,7 @@ public class AiStateController : MonoBehaviour
     [HideInInspector] public WeaponHolder weaponHolder;
     [HideInInspector] public IKControl iKControl;
     [HideInInspector] public Animator animator; //create an animator controller
+    [HideInInspector] public ThirdPersonCharacter thirdPersonCharacter; //create an animator controller
 
     [Header("Debug")] 
     public bool drawDebugPathLines;
@@ -76,6 +78,7 @@ public class AiStateController : MonoBehaviour
         animator = GetComponent<Animator>();
         weaponHolder = GetComponent<WeaponHolder>();
         iKControl = GetComponent<IKControl>();
+        thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
     }
 
     private void Update()
@@ -130,31 +133,15 @@ public class AiStateController : MonoBehaviour
     }
     [SerializeField] private float rotationSpeed = 20;
 
-    public Vector3 destForward;
-    public Vector3 negForward;
-    public float valueFloat;
-    public float valueFloat2;
     private void LookAtTarget()
     {
         var towardsDest = (navAgent.destination - transform.position).normalized;
-        destForward = (navAgent.destination - target.position).normalized;
-        negForward = -transform.forward.normalized;
-        valueFloat = Mathf.Round(destForward.z * 100f) / 100f;
-        valueFloat2 = Mathf.Round(negForward.z * 100f) / 100f;;
+        
         var forward = target.transform.position - transform.position;
         forward.y = 0f;
         var lookRot = Quaternion.LookRotation(forward);
-        transform.rotation = lookRot;
-
-        if (valueFloat == valueFloat2)
-        {
-            animator.SetFloat("Turn", 0);
-            Debug.Log("TURNED BUTTERS");
-        }
-        //Debug.Log(destForward);
         
-        Debug.DrawRay(animator.rootPosition + Vector3.up, destForward);
-        Debug.DrawRay(animator.rootPosition + new Vector3(0,.5f,0), -transform.forward, Color.red);
+        transform.rotation = lookRot;
         //transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * rotationSpeed);
     } 
     
@@ -200,6 +187,11 @@ public class AiStateController : MonoBehaviour
             }
         }
         Array.Clear(targetMeleeArr, 0, 1);
+    }
+
+    public static bool IsBetween(double checkValue, double minValue, double maxValue)
+    {
+        return (checkValue >= Math.Min(minValue,maxValue) && checkValue <= Math.Max(minValue,maxValue));
     }
     
     public Item FindClosestItemInCollection(Collider[] visibleTargets, Transform compareTo) // jobify

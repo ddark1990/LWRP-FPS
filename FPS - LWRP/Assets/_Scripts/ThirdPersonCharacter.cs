@@ -8,20 +8,23 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	[RequireComponent(typeof(Animator))]
 	public class ThirdPersonCharacter : MonoBehaviour
 	{
+		[Header("Character Settings")]
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 12f;
-		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
-		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
-		[SerializeField] float m_MoveSpeedMultiplier = 1f;
-		[SerializeField] float m_AnimSpeedMultiplier = 1f;
+		//[SerializeField] float m_JumpPower = 12f;
+		//[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
+		[Header("Animator Settings")]
+		//[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
+		[SerializeField] private float m_MoveSpeedMultiplier = 1f;
+		[SerializeField] private float m_AnimSpeedMultiplier = 1f;
+		[SerializeField] private float backThreshold = .05f;
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
-		const float k_Half = 0.5f;
+		//const float k_Half = 0.5f;
 		float m_TurnAmount;
 		float m_ForwardAmount;
 		Vector3 m_GroundNormal;
@@ -77,6 +80,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 	        Move(agent.remainingDistance > agent.stoppingDistance ? agent.desiredVelocity : Vector3.zero, false, false);
         }
+        
 
         public void Move(Vector3 move, bool crouch, bool jump)
 		{
@@ -87,7 +91,54 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-			m_TurnAmount = Mathf.Atan2(move.x, move.z);
+			
+			////checks weather the transform is directly behind its destination vector, and if it is, set the horizontal animator float to 0
+			var destinationForward = (agent.destination - _stateController.target.position).normalized;
+			var negativeForward = -transform.forward.normalized;
+        
+			var destX = Mathf.Round(destinationForward.x * 10f) / 10f;
+			var negForwardX = Mathf.Round(negativeForward.x * 10f) / 10f;
+			var destZ = Mathf.Round(destinationForward.z * 10f) / 10f;
+			var negForwardZ = Mathf.Round(negativeForward.z * 10f) / 10f;
+
+			var minX = 0f;
+			var maxX = 0f;
+			var minZ = 0f;
+			var maxZ = 0f;
+			
+			if (destX > 0)
+			{
+				minX = destX - backThreshold;
+				maxX = destX + backThreshold;
+			}
+			else
+			{
+				minX = destX + backThreshold;
+				maxX = destX - backThreshold;
+			}
+			
+			if (destZ > 0)
+			{
+				minZ = destZ - backThreshold;
+				maxZ = destZ + backThreshold;
+			}
+			else
+			{
+				minZ = destZ + backThreshold;
+				maxZ = destZ - backThreshold;
+			}
+        
+			if (backThreshold > 0 && _stateController && AiStateController.IsBetween(negForwardX, minX, maxX) && AiStateController.IsBetween(negForwardZ, minZ, maxZ) /*Mathf.Approximately(negForwardX, destX) && Mathf.Approximately(negForwardZ, destZ)*/)
+			{
+				m_TurnAmount = 0;
+				//Debug.Log("TURNED BUTTERS");
+			}
+			else m_TurnAmount = Mathf.Atan2(move.x, move.z);
+
+			Debug.DrawRay(m_Animator.rootPosition + Vector3.up, destinationForward);
+			Debug.DrawRay(m_Animator.rootPosition + new Vector3(0,.5f,0), -transform.forward, Color.red);
+			////
+			
 			m_ForwardAmount = move.z;
 
 			ApplyExtraTurnRotation();
@@ -110,6 +161,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
+		/*
 		void ScaleCapsuleForCrouching(bool crouch)
 		{
 			if (m_IsGrounded && crouch)
@@ -139,7 +191,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// prevent standing up in crouch-only zones
 			if (!m_Crouching)
 			{
-				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * m_Capsule.radius * k_Half, Vector3.up);
+				Ray crouchRay = new Ray(m_Rigidbody.position + Vector3.up * (m_Capsule.radius * k_Half), Vector3.up);
 				float crouchRayLength = m_CapsuleHeight - m_Capsule.radius * k_Half;
 				if (Physics.SphereCast(crouchRay, m_Capsule.radius * k_Half, crouchRayLength, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 				{
@@ -147,6 +199,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				}
 			}
 		}
+		*/
 		
 		private bool TryGetAnimatorParam( Animator animator, string paramName, out int hash ) //caches and resolves the params with no GC allocation per param
 		{
@@ -221,16 +274,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 
-		void HandleAirborneMovement()
-		{
-			// apply extra gravity from multiplier:
-			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
-			m_Rigidbody.AddForce(extraGravityForce);
+		// void HandleAirborneMovement()
+		// {
+		// 	// apply extra gravity from multiplier:
+		// 	Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
+		// 	m_Rigidbody.AddForce(extraGravityForce);
+		//
+		// 	m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+		// }
 
-			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
-		}
 
-
+		/*
 		void HandleGroundedMovement(bool crouch, bool jump)
 		{
 			// check whether conditions are right to allow a jump:
@@ -243,6 +297,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_GroundCheckDistance = 0.1f;
 			}
 		}
+		*/
 
 		void ApplyExtraTurnRotation()
 		{
@@ -268,7 +323,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
 
-		void CheckGroundStatus()
+		private void CheckGroundStatus()
 		{
 			RaycastHit hitInfo;
 #if UNITY_EDITOR
