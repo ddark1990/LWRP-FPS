@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PreviewPlacementObject : MonoBehaviour
 {
-    private List<Collider> collidersHit = new List<Collider>();
+    private List<Collider> _collidersHit = new List<Collider>();
 
     [Header("Cache")]
     [SerializeField] private Renderer rend;
@@ -14,28 +14,29 @@ public class PreviewPlacementObject : MonoBehaviour
     private void Update()
     {
         UpdatePlaceableColor(rend);
-        isGrounded();
+        IsGrounded();
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer != 9)
         {
-            collidersHit.Add(other);
+            _collidersHit.Add(other);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer != 9)
         {
-            collidersHit.Remove(other);
+            _collidersHit.Remove(other);
         }
     }
 
-    public bool isPlaceable()
+    public bool IsPlaceable()
     {
-        return collidersHit.Count == 0 && isGrounded() ? true : false;
+        return _collidersHit.Count == 0 && IsGrounded() ? true : false;
     }
-    public bool isGrounded()
+
+    private bool IsGrounded()
     {
         var startingRayPos = 0.01f;
         var rayDistance = 0.02f;
@@ -49,15 +50,8 @@ public class PreviewPlacementObject : MonoBehaviour
 
         return hit.collider ? true : false;
     }
-    private void UpdatePlaceableColor(Renderer _rend)
+    private void UpdatePlaceableColor(Renderer rend)
     {
-        if(isPlaceable())
-        {
-            _rend.material = placeableMaterial;
-        }
-        else
-        {
-            _rend.material = nonPlaceableMaterial;
-        }
+        rend.material = IsPlaceable() ? placeableMaterial : nonPlaceableMaterial;
     }
 }

@@ -27,7 +27,7 @@ public class AnimationEventSounds : MonoBehaviour
         if (!enableStepSounds) return;
 
         AudioClip clip = GetRandomTerrainClip();
-        audioSource.PlayOneShot(clip, EffectsManager.Instance.FootstepVolume);
+        audioSource.PlayOneShot(clip, EffectsManager.Instance.footstepVolume);
     }
 
     private AudioClip GetRandomTerrainClip()

@@ -22,10 +22,12 @@ public class HoverOverUI : MonoBehaviour
     
     private static readonly int HoveringOver = Animator.StringToHash("HoveringOver");
     private PhotonView _photonView;
+    private PlayerSelection _playerSelection;
 
     private void Start()
     {
         _photonView = transform.root.GetComponent<PhotonView>();
+        playerSelection = PlayerSelection.Instance;
     }
 
     private void Update()

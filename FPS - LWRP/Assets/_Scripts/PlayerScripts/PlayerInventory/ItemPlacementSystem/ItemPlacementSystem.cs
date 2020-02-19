@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,82 +9,92 @@ public class ItemPlacementSystem : MonoBehaviour
 
     public bool inPlacementMode;
     [Header("RayConfig")]
-    public float MaxPlacementDistance = 5;
+    public float maxPlacementDistance = 5;
     public LayerMask groundLayer;
 
     [Header("Debug")]
     public bool drawDebugRay;
 
-    private bool activeRay;
-    private RaycastHit hit;
-    private GameObject previewObj;
+    private bool _activeRay;
+    private RaycastHit _hit;
+    private GameObject _previewObj;
 
+    private InputManager _inputManager;
+    private InventoryManager _inventoryManager;
+    private PlayerSelection _playerSelection;
+
+    private void Start()
+    {
+        _inputManager = InputManager.Instance;
+        _inventoryManager = InventoryManager.Instance;
+    }
 
     private void OnEnable()
     {
         if (!Instance) Instance = this;
         else Destroy(this);
     }
+    
     private void Update()
     {
         UpdatePlacementMode();
         UpdatePlacementInput();
     }
 
-    public void TogglePlacementMode(Item _item)
+    public void TogglePlacementMode(Item item)
     {
         inPlacementMode = !inPlacementMode;
 
-        var placeableType = _item.ItemType as Placeable; //get the item and cast it into the type we need
+        var placeableType = item.ItemType as Placeable; //get the item and cast it into the type we need
 
-        if(!previewObj) previewObj = Instantiate(placeableType.placeableSettings.PreviewObject, transform);
+        if(!_previewObj) _previewObj = Instantiate(placeableType.placeableSettings.PreviewObject, transform);
         else ResetPlacementMode();
     }
     public void ResetPlacementMode()
     {
         inPlacementMode = false;
-        ResetPreviewObject(previewObj);
+        ResetPreviewObject(_previewObj);
     }
 
     private void UpdatePlacementMode()
     {
         if (!inPlacementMode) return;
+        
+        var ray = PlayerSelection.Instance.cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)); //center of screen in screen coords
+        GetPlacementRaycast(ray, out _hit, maxPlacementDistance, groundLayer); //get active ray on the build layer
 
-        var ray = PlayerSelection.Instance.Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)); //center of screen in screen coords
-        GetPlacementRaycast(ray, out hit, MaxPlacementDistance, groundLayer); //get active ray on the build layer
-
-        //GetGroundNormal(hit.point);
+        //GetGroundNormal(_hit.point);
         UpdatePreviewTransforms(ray);
 
-        if (drawDebugRay) Debug.DrawRay(ray.origin, ray.direction * MaxPlacementDistance, Color.white); //debug
+        if (drawDebugRay) Debug.DrawRay(ray.origin, ray.direction * maxPlacementDistance, Color.white); //debug
     }
-    private void UpdatePreviewTransforms(Ray _ray)
+    private void UpdatePreviewTransforms(Ray ray)
     {
-        var centerOffset = previewObj.GetComponent<BoxCollider>().center;
-        var rayEndPoint = _ray.origin + _ray.direction * (MaxPlacementDistance - 2f);
+        var centerOffset = _previewObj.GetComponent<BoxCollider>().center; //every placeable must be placed with a box collider
+        var rayEndPoint = ray.origin + ray.direction * (maxPlacementDistance - 2f);
         var previewPos = rayEndPoint - centerOffset;
 
-        if (hit.collider)
+        if (_hit.collider)
         {
-            previewObj.transform.position = hit.point;
-            //previewObj.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+            _previewObj.transform.position = _hit.point;
+            //_previewObj.transform.rotation = Quaternion.FromToRotation(Vector3.up, _hit.normal);
         }
         else
         {
-            previewObj.transform.position = previewPos;
+            _previewObj.transform.position = previewPos;
             //previewObj.transform.rotation = Quaternion.FromToRotation(-Vector3.forward, transform.forward);
         }
     }
+    
     private void UpdatePlacementInput()
     {
-        if (Input.GetKeyDown(InputManager.Instance.InputKeyManager.RotatePreviewKey)) //rotate preview object
+        if (Input.GetKeyDown(_inputManager.InputKeyManager.RotatePreviewKey)) //rotate preview object
         {
             RotatePreviewPlacement();
         }
-
-        if(Input.GetKeyDown(InputManager.Instance.InputKeyManager.PlacementKey) && inPlacementMode)
+        if(Input.GetKeyDown(_inputManager.InputKeyManager.PlacementKey) && inPlacementMode)
         {
-            PlacePreviewObject(InventoryManager.Instance.CurrentlySelectedSlot.ItemHolder.CurrentlyHeldItem, previewObj);
+            PlacePreviewObject(_inventoryManager.CurrentlySelectedSlot.ItemHolder.CurrentlyHeldItem, _previewObj);
         }
     }
 
@@ -91,33 +102,33 @@ public class ItemPlacementSystem : MonoBehaviour
     {
         if (!inPlacementMode) return;
 
-        previewObj.transform.Rotate(new Vector3(0,90,0), Space.Self);
+        _previewObj.transform.Rotate(new Vector3(0,90,0));
     }
     private void PlacePreviewObject(Item itemToPlace, GameObject _previewObj) 
     {
         var objPrev = _previewObj.GetComponent<PreviewPlacementObject>();
         
-        if(!objPrev.isPlaceable())
+        if(!objPrev.IsPlaceable())
         {
             Debug.Log("Object placement obstructed.");
             return;
         }
 
-        InventoryManager.Instance.audioSource.PlayOneShot(itemToPlace.ItemType.itemSoundData.ActivateItemSound, 0.2f);
+        _inventoryManager.audioSource.PlayOneShot(itemToPlace.ItemType.itemSoundData.ActivateItemSound, 0.2f);
 
         var _itemToPlace = itemToPlace.ItemType as Placeable;
-        Instantiate(_itemToPlace.placeableSettings.ObjectToPlace, previewObj.transform.position, previewObj.transform.rotation);
+        Instantiate(_itemToPlace.placeableSettings.ObjectToPlace, this._previewObj.transform.position, this._previewObj.transform.rotation);
 
-        InventoryManager.Instance.RemoveItemFromInvetory(itemToPlace);
+        _inventoryManager.RemoveItemFromInvetory(itemToPlace);
 
         ResetPlacementMode();
-        InventoryManager.Instance.ResetCurrentlySelectedSlot();
+        _inventoryManager.ResetCurrentlySelectedSlot();
         _itemToPlace = null;
     }
 
     private void ResetPreviewObject(GameObject _obj)
     {
-        Destroy(previewObj);
+        Destroy(_previewObj);
     }
 
     private bool GetPlacementRaycast(Ray ray, out RaycastHit hit, float maxDistance, LayerMask layerMask)
@@ -126,6 +137,6 @@ public class ItemPlacementSystem : MonoBehaviour
     }
     private void GetGroundNormal(Vector3 groundNormal) //get normal of the collider u are looking at, if nothing hit, get the up vector
     {
-        groundNormal = hit.collider ? groundNormal = hit.normal : groundNormal = Vector3.up;
+        groundNormal = _hit.collider ? groundNormal = _hit.normal : groundNormal = Vector3.up;
     }
 }

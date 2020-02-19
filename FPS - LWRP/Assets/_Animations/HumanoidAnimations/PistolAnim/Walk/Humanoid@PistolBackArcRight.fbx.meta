@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 6513ab9c2074cf34c8f32bf4ce716223
+guid: 2ee8cb0ce33919946b83105a896aa526
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: StrafeLeft
+    second: PistolBackArcRight
+  - first:
+      74: -203655887218126122
+    second: PistolBackRightArc
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,13 +38,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: StrafeLeft
+      name: PistolBackRightArc
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 34
+      lastFrame: 35
       wrapMode: 0
-      orientationOffsetY: 0.3
+      orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
@@ -52,9 +55,9 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []

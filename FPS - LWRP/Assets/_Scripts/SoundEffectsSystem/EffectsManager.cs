@@ -7,7 +7,7 @@ public class EffectsManager : MonoBehaviour
 {
     public static EffectsManager Instance;
 
-    public AudioSource AudioSource;
+    private AudioSource _audioSource;
 
     [Header("Hitmarker Settings")]
     public AudioClip HitMarkerSound;
@@ -17,16 +17,16 @@ public class EffectsManager : MonoBehaviour
     [Header("Footsteps Settings")]
     public List<FootstepData> footstepData;
     [Space]
-    [Range(0, 1)] public float FootstepVolume = 0.2f;
+    [Range(0, 1)] public float footstepVolume = 0.2f;
     [Header("Bullet Settings")]
     public List<BulletImpactData> bulletImpactData;
     [Space]
-    [Range(0,1)] public float BulletImpactVolume = 0.2f;
+    [Range(0,1)] public float bulletImpactVolume = 0.2f;
 
     [Header("AiDeath Sounds Settings")]
-    public bool enabled;
-    public AudioClip[] AiDeathSounds;
-    [Range(0, 1)] public float AiVolume = 0.4f;
+    public new bool enabled;
+    public AudioClip[] aiDeathSounds;
+    [Range(0, 1)] public float aiVolume = 0.4f;
 
     private const string HITMARKER = "hitmarker";
     private const string HEADSHOTMARKER = "headshotmarker";
@@ -34,6 +34,8 @@ public class EffectsManager : MonoBehaviour
 
     private void OnEnable()
     {
+        _audioSource = GetComponent<AudioSource>();
+        
         if (!Instance)
             Instance = this;
     }
@@ -44,12 +46,12 @@ public class EffectsManager : MonoBehaviour
 
         if (collider.CompareTag(HITMARKER))
         {
-            AudioSource.PlayOneShot(HitMarkerSound, hitMarkerVolume);
+            _audioSource.PlayOneShot(HitMarkerSound, hitMarkerVolume);
             _damageMulti = 1f;
         }
         else if (collider.CompareTag(HEADSHOTMARKER))
         {
-            AudioSource.PlayOneShot(HeadShotSound, hitMarkerVolume);
+            _audioSource.PlayOneShot(HeadShotSound, hitMarkerVolume);
             _damageMulti = 1.5f;
         }
 
@@ -62,7 +64,7 @@ public class EffectsManager : MonoBehaviour
 
         var rndNum = UnityEngine.Random.Range(0, 4);
 
-        audioSource.PlayOneShot(AiDeathSounds[rndNum], AiVolume);
+        audioSource.PlayOneShot(aiDeathSounds[rndNum], aiVolume);
     }
 
     [Serializable]

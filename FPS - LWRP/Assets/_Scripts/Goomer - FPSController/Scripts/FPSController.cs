@@ -98,8 +98,8 @@ namespace GoomerFPSController
         {
             if (PhotonNetwork.IsConnected && !photonView.IsMine) //checks if we are connected to a photon server and own this photonview
             {
-                PlayerSelection.Instance.Cam.enabled = false;
-                PlayerSelection.Instance.Cam.gameObject.GetComponent<AudioListener>().enabled = false;
+                PlayerSelection.Instance.cam.enabled = false;
+                PlayerSelection.Instance.cam.gameObject.GetComponent<AudioListener>().enabled = false;
                 return;
             }
             
@@ -143,7 +143,7 @@ namespace GoomerFPSController
             desiredPitch -= mouseInput.y * MouseSensetivity * Time.unscaledDeltaTime;
             desiredPitch = Mathf.Clamp(desiredPitch, -90, 90);
 
-            PlayerSelection.Instance.Cam.transform.localRotation = Quaternion.Euler(new Vector3(desiredPitch, 0, 0));
+            PlayerSelection.Instance.cam.transform.localRotation = Quaternion.Euler(new Vector3(desiredPitch, 0, 0));
         }
         private void Jump(float jumpHeight)
         {

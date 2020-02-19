@@ -13950,7 +13950,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1075052343
+    m_Bits: 1075576631
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -14094,7 +14094,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   drawDebugRay: 1
-  Cam: {fileID: 4762047061799025456}
+  cam: {fileID: 0}
 --- !u!114 &1884943620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14108,7 +14108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inPlacementMode: 0
-  MaxPlacementDistance: 5
+  maxPlacementDistance: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -15144,8 +15144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 4762047063150421456}
   weaponManager: {fileID: 4762047062344890208}
-  itemPlacement: {fileID: 7862445433426016466, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
-    type: 3}
+  itemPlacement: {fileID: 1884943620}
 --- !u!1 &4762047062068216128
 GameObject:
   m_ObjectHideFlags: 0

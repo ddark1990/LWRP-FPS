@@ -2824,6 +2824,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9319a9b81ac48fb45aa925f1a1d54727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  waitMinTime: 1
+  waitMaxTime: 1
+  wanderRadius: 5
+  showWanderRadius: 0
 --- !u!4 &68563261
 Transform:
   m_ObjectHideFlags: 0
@@ -6095,7 +6101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 39
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &152036245
 GameObject:
@@ -11659,7 +11665,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286219807
 GameObject:
@@ -18662,7 +18668,7 @@ PrefabInstance:
     - target: {fileID: 1329803672466805286, guid: 60a7e0c625bd84549b00ecb4c58c24ce,
         type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1329803672466805286, guid: 60a7e0c625bd84549b00ecb4c58c24ce,
         type: 3}
@@ -20485,7 +20491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &481456399
 GameObject:
@@ -20543,7 +20549,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482107845
 GameObject:
@@ -21899,7 +21905,7 @@ Transform:
   - {fileID: 4913353574932850}
   - {fileID: 1630597154}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &527019457
 MonoBehaviour:
@@ -21913,7 +21919,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!114 &527019458
@@ -21928,19 +21940,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!114 &527019459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21955,13 +21982,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 360
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &527019460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22031,6 +22056,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fde4dbf9d1535747abb51533d4c15c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionArr: []
+  aiStateController: {fileID: 0}
+  debugPlanner: 0
+  goalDebug: 0
 --- !u!114 &527019464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22043,7 +22072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91fb93d583c45c47b2440f0901ab71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleTargets: []
+  resultTargetArr: []
   viewRadius: 5
   viewAngle: 360
   targetMask:
@@ -22697,6 +22726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9319a9b81ac48fb45aa925f1a1d54727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  waitMinTime: 1
+  waitMaxTime: 1
+  wanderRadius: 5
+  showWanderRadius: 0
 --- !u!114 &551061190 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114209413506577494, guid: 1825bc935af2c1f4dbb479e6322cd22d,
@@ -24833,6 +24868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9319a9b81ac48fb45aa925f1a1d54727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  waitMinTime: 1
+  waitMaxTime: 1
+  wanderRadius: 5
+  showWanderRadius: 0
 --- !u!1 &599793967
 GameObject:
   m_ObjectHideFlags: 0
@@ -28670,7 +28711,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &677722235
 GameObject:
@@ -28701,6 +28742,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9319a9b81ac48fb45aa925f1a1d54727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  waitMinTime: 1
+  waitMaxTime: 1
+  wanderRadius: 5
+  showWanderRadius: 0
 --- !u!4 &677722237
 Transform:
   m_ObjectHideFlags: 0
@@ -30783,7 +30830,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &732016724
 GameObject:
@@ -34567,7 +34614,7 @@ Transform:
   m_Children:
   - {fileID: 7773807932468235914}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &837090064
 Rigidbody:
@@ -38482,7 +38529,7 @@ Transform:
   - {fileID: 1248332278}
   - {fileID: 857891134}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &952697981
 MonoBehaviour:
@@ -41059,7 +41106,7 @@ Transform:
   - {fileID: 607316214}
   - {fileID: 1949335423}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1023364908
 Animator:
@@ -42888,7 +42935,7 @@ Transform:
   - {fileID: 911673994}
   - {fileID: 357561471}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1037655097
 GameObject:
@@ -44487,7 +44534,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1086831891
 GameObject:
@@ -46451,7 +46498,7 @@ Transform:
   - {fileID: 1983333431}
   - {fileID: 1415146723}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1137955464
 GameObject:
@@ -46785,6 +46832,80 @@ Transform:
   m_Father: {fileID: 1037003854}
   m_RootOrder: 73
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1146305608
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -73.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -34.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179358, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_Name
+      value: Zombie_RomeroAI (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108816062459179358, guid: da3dd297abe410f40a257ca9659dda3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da3dd297abe410f40a257ca9659dda3b, type: 3}
 --- !u!1 &1147751175
 GameObject:
   m_ObjectHideFlags: 0
@@ -48082,11 +48203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3899103668944479091, guid: 01f5489d906da74468d806aa76efa24f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5141758157105557290, guid: 01f5489d906da74468d806aa76efa24f,
         type: 3}
       propertyPath: m_Name
@@ -48130,7 +48246,7 @@ PrefabInstance:
     - target: {fileID: 5141758157105557301, guid: 01f5489d906da74468d806aa76efa24f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 5141758157105557301, guid: 01f5489d906da74468d806aa76efa24f,
         type: 3}
@@ -48146,11 +48262,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 84.827
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696486091314993280, guid: 01f5489d906da74468d806aa76efa24f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01f5489d906da74468d806aa76efa24f, type: 3}
@@ -48372,7 +48483,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!114 &1189237380
@@ -48387,19 +48504,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!195 &1189237381
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -48436,13 +48568,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 360
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 3
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &1189237383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48492,7 +48622,7 @@ Transform:
   - {fileID: 4045046831306793}
   - {fileID: 1176070360}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189831544
 GameObject:
@@ -49153,7 +49283,7 @@ Transform:
   - {fileID: 2769922231112388484}
   - {fileID: 330725239}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1202377728
 Animator:
@@ -49186,7 +49316,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!1 &1203505294
@@ -51145,7 +51281,7 @@ Transform:
   - {fileID: 795648000}
   - {fileID: 2039691626}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1249886927
 GameObject:
@@ -58223,7 +58359,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!114 &1450357732
@@ -58238,19 +58380,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!195 &1450357733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -58287,13 +58444,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 360
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 3
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &1450357735
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -58343,7 +58498,7 @@ Transform:
   - {fileID: 4786942185005969}
   - {fileID: 1514863380}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1454603410
 GameObject:
@@ -58763,7 +58918,7 @@ Transform:
   - {fileID: 1435472325}
   - {fileID: 745908376}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1470055046
 GameObject:
@@ -58835,7 +58990,7 @@ Transform:
   - {fileID: 8690928877151455045}
   - {fileID: 612597381}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1470199005
 MonoBehaviour:
@@ -58849,7 +59004,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!114 &1470199006
@@ -58864,19 +59025,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!114 &1470199007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58891,13 +59067,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 0
   m_StationaryTurnSpeed: 0
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &1470199008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -58979,7 +59153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91fb93d583c45c47b2440f0901ab71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleTargets: []
+  resultTargetArr: []
   viewRadius: 5
   viewAngle: 360
   targetMask:
@@ -60065,7 +60239,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1511281772
 GameObject:
@@ -60900,7 +61074,7 @@ Transform:
   - {fileID: 1856659472}
   - {fileID: 66969627489703922}
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539571936
 GameObject:
@@ -63501,7 +63675,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 41
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1602554119
 GameObject:
@@ -68002,7 +68176,7 @@ PrefabInstance:
     - target: {fileID: 6208821672384571075, guid: 2f561e1a6b0311d4c9ca385756c55053,
         type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 6208821672384571075, guid: 2f561e1a6b0311d4c9ca385756c55053,
         type: 3}
@@ -68806,7 +68980,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1755334983
 Rigidbody:
@@ -72533,7 +72707,7 @@ PrefabInstance:
     - target: {fileID: 8584177833697014773, guid: d41f08294c586184693ba2159aa9985c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 38
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 8584177833697014773, guid: d41f08294c586184693ba2159aa9985c,
         type: 3}
@@ -74252,6 +74426,75 @@ Transform:
   m_Father: {fileID: 1037003854}
   m_RootOrder: 580
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1905478252
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6007875965235073456, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_Name
+      value: Sack_LargeWoodBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -65.92737
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.14524639
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -36.917435
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294453171767174051, guid: 5eebc0f200f054c4cb320ca8a44e05cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5eebc0f200f054c4cb320ca8a44e05cb, type: 3}
 --- !u!1 &1907941073
 GameObject:
   m_ObjectHideFlags: 0
@@ -75080,7 +75323,7 @@ Transform:
   - {fileID: 877832679}
   - {fileID: 2044242938}
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1926961736
 MonoBehaviour:
@@ -77824,7 +78067,7 @@ Transform:
   - {fileID: 4605996806436558}
   - {fileID: 516133808}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2002115715
 MonoBehaviour:
@@ -77838,7 +78081,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!114 &2002115716
@@ -77853,19 +78102,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!114 &2002115717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77880,13 +78144,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 0
   m_StationaryTurnSpeed: 0
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &2002115718
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77956,6 +78218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fde4dbf9d1535747abb51533d4c15c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionArr: []
+  aiStateController: {fileID: 0}
+  debugPlanner: 0
+  goalDebug: 0
 --- !u!114 &2002115722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77968,7 +78234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91fb93d583c45c47b2440f0901ab71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleTargets: []
+  resultTargetArr: []
   viewRadius: 5
   viewAngle: 360
   targetMask:
@@ -78929,7 +79195,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2013054745
 Rigidbody:
@@ -80598,7 +80864,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 89.07, y: -0.000015258789, z: -0.000015258789}
 --- !u!114 &2045458636
 MonoBehaviour:
@@ -81686,7 +81952,7 @@ Transform:
   - {fileID: 4973058864611691}
   - {fileID: 475847701}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2066659434
 MonoBehaviour:
@@ -81700,7 +81966,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!114 &2066659435
@@ -81715,19 +81987,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!114 &2066659436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81742,13 +82029,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 360
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &2066659437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -82871,7 +83156,7 @@ Transform:
   - {fileID: 4632030929294167}
   - {fileID: 544451635}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2085375349
 MonoBehaviour:
@@ -82885,7 +83170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  health: 0
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
   isDead: 0
   ragDollController: {fileID: 0}
 --- !u!114 &2085375350
@@ -82900,19 +83191,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!114 &2085375351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82927,13 +83233,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 0
   m_StationaryTurnSpeed: 0
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &2085375352
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -83015,7 +83319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91fb93d583c45c47b2440f0901ab71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visibleTargets: []
+  resultTargetArr: []
   viewRadius: 0
   viewAngle: 0
   targetMask:
@@ -100262,7 +100566,7 @@ PrefabInstance:
     - target: {fileID: 688110803091818759, guid: aeb2f796878a4d444ac90bdbfcc165de,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 688110803091818759, guid: aeb2f796878a4d444ac90bdbfcc165de,
         type: 3}
@@ -101158,7 +101462,7 @@ PrefabInstance:
     - target: {fileID: 94991877026651234, guid: ddda545d845f21d48804e0598e62c500,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 94991877026651234, guid: ddda545d845f21d48804e0598e62c500,
         type: 3}
@@ -101409,7 +101713,7 @@ PrefabInstance:
     - target: {fileID: 1820635907609252690, guid: a56ab167468c5134793714b3cb65d2fe,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1820635907609252690, guid: a56ab167468c5134793714b3cb65d2fe,
         type: 3}
@@ -101624,7 +101928,7 @@ PrefabInstance:
     - target: {fileID: 2220923197241284722, guid: b93af9a24aec6ae4caae6babfa3e5bb4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2220923197241284722, guid: b93af9a24aec6ae4caae6babfa3e5bb4,
         type: 3}
@@ -102158,7 +102462,7 @@ PrefabInstance:
     - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3108816062459179351, guid: da3dd297abe410f40a257ca9659dda3b,
         type: 3}
@@ -102183,7 +102487,7 @@ PrefabInstance:
     - target: {fileID: 3108816062459179358, guid: da3dd297abe410f40a257ca9659dda3b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da3dd297abe410f40a257ca9659dda3b, type: 3}
@@ -106848,7 +107152,7 @@ PrefabInstance:
     - target: {fileID: 738649903546644714, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 738649903546644714, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
         type: 3}
@@ -107080,6 +107384,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4762047062430404319, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4762047062552741556, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -107198,6 +107507,11 @@ PrefabInstance:
     - target: {fileID: 4762047062716314401, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762047062751252135, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4762047062787884347, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
@@ -107300,6 +107614,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4762047062967649472, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4762047062969694134, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -107359,11 +107678,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4762047063051362995, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
-        type: 3}
-      propertyPath: DrawDebugRays
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4762047063173527654, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
         type: 3}
@@ -107593,6 +107907,11 @@ PrefabInstance:
     - target: {fileID: 4762047063630966130, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762047063653269264, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4762047063712893668, guid: 4bea842dfc6fb154291ffb78f2dd7ad2,
@@ -112640,7 +112959,7 @@ PrefabInstance:
     - target: {fileID: 6584083464156629054, guid: ab3891059d76aa44ca59c36f777e1e71,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6584083464156629054, guid: ab3891059d76aa44ca59c36f777e1e71,
         type: 3}
@@ -112738,7 +113057,7 @@ PrefabInstance:
     - target: {fileID: 6655988240008838013, guid: f1c2dfe52c1dcac44a1610405a09a0c6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6655988240008838013, guid: f1c2dfe52c1dcac44a1610405a09a0c6,
         type: 3}
@@ -112790,19 +113109,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea778c4058aa234fb25a93b32975a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  hasAgro: 0
-  inCombat: 0
-  isFeeding: 0
-  isResting: 0
-  isFleeing: 0
-  isIdle: 0
-  isHungry: 0
+  aiArchetype: {fileID: 0}
+  target: {fileID: 0}
   distanceFromTarget: 0
+  rangedWeaponEquiped: {fileID: 0}
+  meleeWeaponEquiped: {fileID: 0}
+  hasAgro: 0
+  pickUpAvailable: 0
+  inCombat: 0
+  hasTargetFocus: 0
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 0}
+  aiInventory: {fileID: 0}
   navAgent: {fileID: 0}
-  navObstacle: {fileID: 0}
+  weaponHolder: {fileID: 0}
+  iKControl: {fileID: 0}
+  animator: {fileID: 0}
+  thirdPersonCharacter: {fileID: 0}
+  drawDebugPathLines: 0
+  rotationSpeed: 20
+  meleeDebug: 0
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  meleeRadiusRange: 0.25
+  sideControl: 0
+  heightControl: 1.25
+  distanceControl: 0.7
+  targetMeleeArr: []
 --- !u!195 &6680016160087383236
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -112839,13 +113173,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 12
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
+  m_GroundCheckDistance: 0.1
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.1
-  SetRoot: 1
+  animationBlendDamp: 0.5
+  backThreshold: 0.05
 --- !u!54 &6680016160087383238
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -113184,7 +113516,7 @@ Transform:
   - {fileID: 681008754}
   - {fileID: 327195068}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7756556527423531208
 GameObject:
@@ -113706,7 +114038,7 @@ PrefabInstance:
     - target: {fileID: 3754260129076170567, guid: f0433a98249dbd44ba02f32e5d2a4c3e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3754260129076170567, guid: f0433a98249dbd44ba02f32e5d2a4c3e,
         type: 3}

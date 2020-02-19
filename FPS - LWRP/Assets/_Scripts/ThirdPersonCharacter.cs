@@ -18,6 +18,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		//[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] private float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] private float m_AnimSpeedMultiplier = 1f;
+		[SerializeField] private float animationBlendDamp = .5f;
+		[Header("Walk Back Animation Settings")]
+		[Tooltip("")]
 		[SerializeField] private float backThreshold = .05f;
 
 		Rigidbody m_Rigidbody;
@@ -36,6 +39,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private AiStateController _stateController;
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Turn = Animator.StringToHash("Turn");
+        private static readonly int VerticalDamp = Animator.StringToHash("VerticalDamp");
+        private static readonly int TurnDamp = Animator.StringToHash("TurnDamp");
         private static readonly int AgentVelocity = Animator.StringToHash("AgentVelocity");
         
         private Animator m_LastAnimatorCache; 
@@ -128,10 +133,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				maxZ = destZ - backThreshold;
 			}
         
-			if (backThreshold > 0 && _stateController && AiStateController.IsBetween(negForwardX, minX, maxX) && AiStateController.IsBetween(negForwardZ, minZ, maxZ) /*Mathf.Approximately(negForwardX, destX) && Mathf.Approximately(negForwardZ, destZ)*/)
+			if (_stateController.hasTargetFocus &&  backThreshold > 0 && _stateController && AiStateController.IsBetween(negForwardX, minX, maxX) && AiStateController.IsBetween(negForwardZ, minZ, maxZ) /*Mathf.Approximately(negForwardX, destX) && Mathf.Approximately(negForwardZ, destZ)*/)
 			{
 				m_TurnAmount = 0;
-				//Debug.Log("TURNED BUTTERS");
+				m_ForwardAmount = -1;
+				Debug.Log("TURNED BUTTERS");
 			}
 			else m_TurnAmount = Mathf.Atan2(move.x, move.z);
 
@@ -224,16 +230,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				return false;
 			}
 		}
-		
-		void UpdateAnimator(Vector3 move)
+
+		private void UpdateAnimator(Vector3 move)
 		{
 			if( TryGetAnimatorParam( m_Animator, "Vertical", out _hash ) )
 			{
-				m_Animator.SetFloat(Vertical, m_ForwardAmount, 0.1f, Time.deltaTime);
+				m_Animator.SetFloat(Vertical, m_ForwardAmount);
 			}
 			if( TryGetAnimatorParam( m_Animator, "Turn", out _hash ) )
 			{
-				m_Animator.SetFloat(Turn, m_TurnAmount, 0.1f, Time.deltaTime);
+				m_Animator.SetFloat(Turn, m_TurnAmount);
+			}
+			if( TryGetAnimatorParam( m_Animator, "VerticalDamp", out _hash ) )
+			{
+				m_Animator.SetFloat(VerticalDamp, m_ForwardAmount, animationBlendDamp, Time.deltaTime);
+			}
+			if( TryGetAnimatorParam( m_Animator, "TurnDamp", out _hash ) )
+			{
+				m_Animator.SetFloat(TurnDamp, m_TurnAmount, animationBlendDamp, Time.deltaTime);
 			}
 			if( TryGetAnimatorParam( m_Animator, "AgentVelocity", out _hash ) )
 			{
