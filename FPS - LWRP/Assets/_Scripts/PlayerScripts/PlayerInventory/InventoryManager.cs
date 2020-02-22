@@ -30,6 +30,21 @@ public class InventoryManager : MonoBehaviour
     public bool MenuOpen;
 
     #region Unity Methods
+
+    private void OnEnable()
+    {
+        EventRelay.OnUseItem += UseItemEvent;
+        EventRelay.OnPickedUpItem += PickUpItemEvent;
+        EventRelay.OnDropedItem += DropItemEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventRelay.OnUseItem -= UseItemEvent;
+        EventRelay.OnPickedUpItem -= PickUpItemEvent;
+        EventRelay.OnDropedItem -= DropItemEvent;
+    }
+
     private void Awake()
     {
         if(Instance == null)
@@ -66,7 +81,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RemoveItemFromInvetory(Item itemToRemove)
+    public void RemoveItemFromInventory(Item itemToRemove)
     {
         HoldingItems.Remove(itemToRemove); 
         Destroy(itemToRemove.gameObject); //removes the items gameobject from the playersprefab
@@ -201,8 +216,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (HoldingItems.Contains(itemInView)) return; //prevent getting the same item multiple times from spamming the pick up key
 
-            if (itemInView.GetComponent<IInteractable>() != null) //interface init
-                itemInView.GetComponent<IInteractable>().OnPickedUp();
+            PickUpItemEvent(itemInView);
 
             audioSource.PlayOneShot(itemInView.ItemType.itemSoundData.PickUpItemSound, uiVolume); //play pick up item sound
 
@@ -350,6 +364,25 @@ public class InventoryManager : MonoBehaviour
         return uiVolume = (value * uiVolMax) / 100;
     }
 
+    #region Events
+
+    public void UseItemEvent(Item item)
+    {
+        Debug.Log("Used " + item.ItemType.itemData.ItemName);
+    }
+
+    public void PickUpItemEvent(Item item)
+    {
+        PopupInfoController.Instance.AddPopUp(item.ItemType.itemData.ItemName, item.ItemAmount);
+    }
+    
+    public void DropItemEvent(Item item)
+    {
+        Debug.Log("Dropped " + item.ItemType.itemData.ItemName);
+    }
+     
+    #endregion
+    
     #region Helper Functions
     private InventorySlot GetCurrentlySelectSlot()
     {

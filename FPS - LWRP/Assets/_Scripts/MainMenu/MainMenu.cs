@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private void OnStartGamePress()
+    public void OnStartGamePress()
     {
-        //load scene into game
+        SceneManager.LoadSceneAsync("MinigameArenaScene");
     }
     
     public void OnOptionsPress()

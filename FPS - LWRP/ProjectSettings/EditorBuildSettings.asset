@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scripts/Goomer - FPSController/Scenes/Goomer - FPSController Scene.unity
-    guid: c98fd0919e1ce104ba9a48601dcfe2b1
+    path: Assets/_Scenes/MiniGameScenes/MenuScene.unity
+    guid: abb541dd4a457904aab3c9e01ce2afac
   - enabled: 1
-    path: Assets/_Scenes/MenuScene/OptionsScene.unity
-    guid: 771e3272e67937446b5f722d6d086e94
+    path: Assets/_Scenes/MiniGameScenes/MinigameArenaScene.unity
+    guid: 2a7aa4540c19314408fc5a160aa3ee4f
   m_configObjects: {}

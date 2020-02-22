@@ -98,51 +98,54 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
 			
 			////checks weather the transform is directly behind its destination vector, and if it is, set the horizontal animator float to 0
-			var destinationForward = (agent.destination - _stateController.target.position).normalized;
-			var negativeForward = -transform.forward.normalized;
+			if (_stateController.target)
+			{
+				var destinationForward = (agent.destination - _stateController.target.position).normalized;
+				var negativeForward = -transform.forward.normalized;
         
-			var destX = Mathf.Round(destinationForward.x * 10f) / 10f;
-			var negForwardX = Mathf.Round(negativeForward.x * 10f) / 10f;
-			var destZ = Mathf.Round(destinationForward.z * 10f) / 10f;
-			var negForwardZ = Mathf.Round(negativeForward.z * 10f) / 10f;
+				var destX = Mathf.Round(destinationForward.x * 10f) / 10f;
+				var negForwardX = Mathf.Round(negativeForward.x * 10f) / 10f;
+				var destZ = Mathf.Round(destinationForward.z * 10f) / 10f;
+				var negForwardZ = Mathf.Round(negativeForward.z * 10f) / 10f;
 
-			var minX = 0f;
-			var maxX = 0f;
-			var minZ = 0f;
-			var maxZ = 0f;
+				var minX = 0f;
+				var maxX = 0f;
+				var minZ = 0f;
+				var maxZ = 0f;
 			
-			if (destX > 0)
-			{
-				minX = destX - backThreshold;
-				maxX = destX + backThreshold;
-			}
-			else
-			{
-				minX = destX + backThreshold;
-				maxX = destX - backThreshold;
-			}
+				if (destX > 0)
+				{
+					minX = destX - backThreshold;
+					maxX = destX + backThreshold;
+				}
+				else
+				{
+					minX = destX + backThreshold;
+					maxX = destX - backThreshold;
+				}
 			
-			if (destZ > 0)
-			{
-				minZ = destZ - backThreshold;
-				maxZ = destZ + backThreshold;
-			}
-			else
-			{
-				minZ = destZ + backThreshold;
-				maxZ = destZ - backThreshold;
-			}
+				if (destZ > 0)
+				{
+					minZ = destZ - backThreshold;
+					maxZ = destZ + backThreshold;
+				}
+				else
+				{
+					minZ = destZ + backThreshold;
+					maxZ = destZ - backThreshold;
+				}
         
-			if (_stateController.hasTargetFocus &&  backThreshold > 0 && _stateController && AiStateController.IsBetween(negForwardX, minX, maxX) && AiStateController.IsBetween(negForwardZ, minZ, maxZ) /*Mathf.Approximately(negForwardX, destX) && Mathf.Approximately(negForwardZ, destZ)*/)
-			{
-				m_TurnAmount = 0;
-				m_ForwardAmount = -1;
-				Debug.Log("TURNED BUTTERS");
-			}
-			else m_TurnAmount = Mathf.Atan2(move.x, move.z);
+				if (_stateController.hasTargetFocus &&  backThreshold > 0 && _stateController && AiStateController.IsBetween(negForwardX, minX, maxX) && AiStateController.IsBetween(negForwardZ, minZ, maxZ) /*Mathf.Approximately(negForwardX, destX) && Mathf.Approximately(negForwardZ, destZ)*/)
+				{
+					m_TurnAmount = 0;
+					m_ForwardAmount = -1;
+					Debug.Log("TURNED BUTTERS");
+				}
+				else m_TurnAmount = Mathf.Atan2(move.x, move.z);
 
-			Debug.DrawRay(m_Animator.rootPosition + Vector3.up, destinationForward);
-			Debug.DrawRay(m_Animator.rootPosition + new Vector3(0,.5f,0), -transform.forward, Color.red);
+				Debug.DrawRay(m_Animator.rootPosition + Vector3.up, destinationForward);
+				Debug.DrawRay(m_Animator.rootPosition + new Vector3(0,.5f,0), -transform.forward, Color.red);
+			}
 			////
 			
 			m_ForwardAmount = move.z;

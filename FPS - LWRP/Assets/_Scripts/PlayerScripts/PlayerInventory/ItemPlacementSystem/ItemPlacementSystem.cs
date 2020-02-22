@@ -119,7 +119,7 @@ public class ItemPlacementSystem : MonoBehaviour
         var _itemToPlace = itemToPlace.ItemType as Placeable;
         Instantiate(_itemToPlace.placeableSettings.ObjectToPlace, this._previewObj.transform.position, this._previewObj.transform.rotation);
 
-        _inventoryManager.RemoveItemFromInvetory(itemToPlace);
+        _inventoryManager.RemoveItemFromInventory(itemToPlace);
 
         ResetPlacementMode();
         _inventoryManager.ResetCurrentlySelectedSlot();

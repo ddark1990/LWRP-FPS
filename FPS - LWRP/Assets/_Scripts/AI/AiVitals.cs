@@ -29,11 +29,13 @@ public class AiVitals : MonoBehaviour
     private const float MaxHunger = 50;
     private const float MaxThirst = 100;
 
+    private AiStateController _aiStateController;
     
     
     private void Awake()
     {
         _startingHealth = health;
+        _aiStateController = GetComponent<AiStateController>();
     }
     
     private void Update()
@@ -91,6 +93,8 @@ public class AiVitals : MonoBehaviour
         {
             ragDollController.SetRadDollState(this, animator, navAgent, rb, false);
         }
+
+        GameManager.instance.OnKilledAi(_aiStateController);
 
         //ragDollController.ApplyBulletForceToCollider(lastColliderHitName);
     }

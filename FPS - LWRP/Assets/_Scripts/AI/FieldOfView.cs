@@ -31,6 +31,17 @@ public class FieldOfView : MonoBehaviour
         this._viewMesh = viewMesh;
     }
 
+    private void OnEnable()
+    {
+        EventRelay.OnSeenTarget += targetInViewEvent;
+        EventRelay.LostVisionOfTarget += lostTargetInViewEvent;
+    }
+    private void OnDisable()
+    {
+        EventRelay.OnSeenTarget -= targetInViewEvent;
+        EventRelay.LostVisionOfTarget -= lostTargetInViewEvent;
+    }
+
     private void Start()
     {
         resultTargetArr = new Collider[50];
@@ -90,8 +101,9 @@ public class FieldOfView : MonoBehaviour
             {
                 _aiStateController.target = target;
                 _foundTarget = true;
-                
-                //targetInViewEvent(target); //found target
+
+
+                targetInViewEvent(target); //found target
                 //Debug.Log(target.name + " In View", this);
             }
 
@@ -100,6 +112,16 @@ public class FieldOfView : MonoBehaviour
         
     }
 
+    public void targetInViewEvent(Transform target)
+    {
+        Debug.Log("Seen " + target.name);
+    }
+
+    public void lostTargetInViewEvent(Transform target)
+    {
+        Debug.Log("Lost track of " + target.name);
+    }
+    
     private void DrawFieldOfView() //draws the mesh to display the angle and radius
     {
         int stepCount = Mathf.RoundToInt(viewAngle * meshRes);

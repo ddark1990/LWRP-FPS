@@ -87,6 +87,8 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
     public bool moveAgent(GoapAction nextAction)
     {
+        if (aiStateController.aiVitals.isDead) return false;
+        
          //if we don't need to move anywhere
          if (previousDestination == nextAction.target.transform.position)
          {

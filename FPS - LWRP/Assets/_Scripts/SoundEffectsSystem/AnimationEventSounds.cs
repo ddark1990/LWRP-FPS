@@ -9,18 +9,22 @@ public class AnimationEventSounds : MonoBehaviour
 
     [Header("Ground Check Settings")]
     [Tooltip("How high, relative to the character's pivot point the start of the ray is.")]
-    [SerializeField] float groundCheckHeight = 0.5f;
+    [SerializeField]
+    private float groundCheckHeight = 0.5f;
     [Tooltip("What is the radius of the ray.")]
-    [SerializeField] float groundCheckRadius = 0.5f;
+    [SerializeField]
+    private float groundCheckRadius = 0.5f;
     [Tooltip("How far the ray is casted.")]
-    [SerializeField] float groundCheckDistance = 0.3f;
+    [SerializeField]
+    private float groundCheckDistance = 0.3f;
     [Tooltip("What are the layers that should be taken into account when checking for ground.")]
-    [SerializeField] LayerMask groundLayers;
+    [SerializeField]
+    private LayerMask groundLayers;
 
     [Header("Cache")]
     public AudioSource audioSource;
 
-    private RaycastHit currentHitInfo;
+    private RaycastHit _currentHitInfo;
 
     private void StepSound()
     {
@@ -39,12 +43,11 @@ public class AnimationEventSounds : MonoBehaviour
         {
             var a = footstepData[i];
 
-            if (a.index.Equals(terrainTextureIndex))
-            {
-                var clip = footstepData[i].FootstepSounds[Random.Range(0, footstepData[i].FootstepSounds.Length)];
+            if (!a.index.Equals(terrainTextureIndex)) continue;
+            
+            var clip = footstepData[i].FootstepSounds[Random.Range(0, footstepData[i].FootstepSounds.Length)];
 
-                return clip;
-            }
+            return clip;
         }
 
         return null;/*footstepData[terrainTextureIndex].FootstepSounds[Random.Range(0, footstepData[terrainTextureIndex].FootstepSounds.Length)];*/
