@@ -17,12 +17,12 @@ public class FSM {
 
 	private Stack<FSMState> stateStack = new Stack<FSMState> ();
 
-	public delegate void FSMState (FSM fsm, AiStateController aiAgent);
+	public delegate void FSMState (FSM fsm, AiController aiAgent);
 	
 
-	public void Update (AiStateController aiStateController) {
+	public void Update (AiController aiController) {
 		if (stateStack.Peek() != null)
-			stateStack.Peek().Invoke (this, aiStateController);
+			stateStack.Peek().Invoke (this, aiController);
 	}
 
 	public void pushState(FSMState state) {

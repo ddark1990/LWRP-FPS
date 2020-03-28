@@ -6210,13 +6210,13 @@ GameObject:
   - component: {fileID: 3108816062459179349}
   - component: {fileID: 3108816062459179348}
   - component: {fileID: 3108816062459179355}
-  - component: {fileID: 3108816062459179353}
   - component: {fileID: 3108816062459179352}
   - component: {fileID: 3108816062459179359}
   - component: {fileID: 642881497}
   - component: {fileID: 3108816062459179354}
   - component: {fileID: 855928947}
-  - component: {fileID: 855928958}
+  - component: {fileID: 1725242874}
+  - component: {fileID: 1725242875}
   m_Layer: 10
   m_Name: Zombie_RomeroAI
   m_TagString: Zombie
@@ -6310,7 +6310,7 @@ NavMeshAgent:
   m_Acceleration: 0
   avoidancePriority: 50
   m_AngularSpeed: 0
-  m_StoppingDistance: 0.9
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -6318,27 +6318,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &3108816062459179353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3108816062459179358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  hunger: 100
-  thirst: 100
-  hungerRate: 0.1
-  thirstRate: 0.1
-  hungerThreshold: 25
-  thirstThreshold: 25
-  isDead: 0
-  ragDollController: {fileID: 2734058337427770523}
 --- !u!114 &3108816062459179352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6352,11 +6331,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultTargetArr: []
-  viewRadius: 5
+  viewRadius: 25
   viewAngle: 170
   targetMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 256
   meshRes: 0
   edgeResolveIteratons: 0
   edgeDistThreshold: 0
@@ -6376,7 +6355,7 @@ MonoBehaviour:
   actionArr:
   - {fileID: 2734058336266596569}
   - {fileID: 2734058336266596575}
-  aiStateController: {fileID: 0}
+  aiController: {fileID: 0}
   debugPlanner: 0
   goalDebug: 0
 --- !u!114 &642881497
@@ -6421,14 +6400,15 @@ MonoBehaviour:
   pickUpAvailable: 0
   inCombat: 0
   hasTargetFocus: 0
+  vitals: {fileID: 0}
   aiVitals: {fileID: 0}
   fieldOfView: {fileID: 3108816062459179352}
-  aiInventory: {fileID: 0}
+  inventory: {fileID: 0}
   navAgent: {fileID: 0}
   weaponHolder: {fileID: 0}
-  iKControl: {fileID: 0}
   animator: {fileID: 0}
   thirdPersonCharacter: {fileID: 0}
+  iKControl: {fileID: 0}
   drawDebugPathLines: 0
   rotationSpeed: 5
   meleeDebug: 1
@@ -6454,7 +6434,7 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &855928958
+--- !u!114 &1725242874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6463,8 +6443,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 3108816062459179358}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66af9aa368759be469ed402b4c1c9b49, type: 3}
+  m_Script: {fileID: 11500000, guid: b13aa5f7c36cc59418c6ae5e189ad36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetIk: {fileID: 0}
-  rotationOffset: {x: 0, y: 0, z: 0}
+  health: 100
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
+  isDead: 0
+--- !u!114 &1725242875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108816062459179358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2681824e6f065349b3ce290fce5f203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  hunger: 100
+  thirst: 100
+  hungerRate: 1
+  thirstRate: 1
+  hungerThreshold: 25
+  thirstThreshold: 1
+  isDead: 0
+  ragDollController: {fileID: 2734058337427770523}

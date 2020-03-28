@@ -40,7 +40,7 @@ public class EffectsManager : MonoBehaviour
             Instance = this;
     }
 
-    public void PlayHitMarker(Collider collider, out float damageMulti)
+    public void PlayHitMarker(Collider collider, out float damageMulti) //fix
     {
         var _damageMulti = 1f;
 

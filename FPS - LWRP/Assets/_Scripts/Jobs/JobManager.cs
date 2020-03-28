@@ -11,7 +11,7 @@ using System.Collections.Concurrent;
 
 public class JobManager : MonoBehaviour
 {
-    public List<AiStateController> globalAiList;
+    public List<AiController> globalAiList;
 
     //distance to target job variables
     //private NativeList<JobHandle> jobHandleList;
@@ -25,7 +25,7 @@ public class JobManager : MonoBehaviour
         GetDistanceToTargetJob(globalAiList); //runs the distance comparer between ai's & its focus (maybe other things too like magnitude, etc)
     }
 
-    public void InitializeAi(AiStateController aiController) //when ai is spawned into the world, it initializes itself by adding self to global ai list
+    public void InitializeAi(AiController aiController) //when ai is spawned into the world, it initializes itself by adding self to global ai list
     {
         globalAiList.Add(aiController);
     } 
@@ -62,7 +62,7 @@ public class JobManager : MonoBehaviour
     //    return jobHandle;
     //}
 
-    private void GetDistanceToTargetJob(List<AiStateController> listOfAi)
+    private void GetDistanceToTargetJob(List<AiController> listOfAi)
     {
         //jobHandleList = new NativeList<JobHandle>(Allocator.Temp); //first create native collections to store data
         _posArray = new NativeArray<float3>(listOfAi.Count, Allocator.TempJob);
@@ -96,7 +96,7 @@ public class JobManager : MonoBehaviour
     {
         _posArray[index] = posTransform.position; //put all data into ur collections
         _targetPosArray[index] = targetPosTransform.position;
-        _lengthToTarget[index] = posTransform.GetComponent<AiStateController>().distanceFromTarget;
+        _lengthToTarget[index] = posTransform.GetComponent<AiController>().distanceFromTarget;
 
         GetDistanceFromTargetJob job = new GetDistanceFromTargetJob //create job and pass any data it requires
         {

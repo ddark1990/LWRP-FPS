@@ -12,12 +12,12 @@ public class WanderAction : AiAction
     NavMeshPath path;
     float elapsedTime = 0f;
 
-    public override void Act(AiStateController controller, NavMeshAgent agent)
+    public override void Act(AiController controller, NavMeshAgent agent)
     {
         //Wander(controller, agent, controller.aiArchetype.wanderData.WaitTime, controller.aiArchetype.wanderData.RadiusSizes.y);
     }
 
-    public void Wander(AiStateController controller, NavMeshAgent agent, float waitTime, float wanderRadius)
+    public void Wander(AiController controller, NavMeshAgent agent, float waitTime, float wanderRadius)
     {
         if (agent.hasPath) return;
 

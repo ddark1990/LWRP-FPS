@@ -19,7 +19,7 @@ public class FieldOfView : MonoBehaviour
     public float rayHeight = 1f;
 
     private readonly Mesh _viewMesh;
-    private AiStateController _aiStateController;
+    private AiController _aiController;
     //private Collider[] targetsInViewRadius;
     private bool _foundTarget;
 
@@ -45,12 +45,12 @@ public class FieldOfView : MonoBehaviour
     private void Start()
     {
         resultTargetArr = new Collider[50];
-        _aiStateController = GetComponent<AiStateController>();
+        _aiController = GetComponent<AiController>();
     }
 
     private void Update()
     {
-        if (_aiStateController.aiVitals.isDead) return;
+        if (_aiController.aiVitals.isDead) return;
 
         FindVisibleTargets();
     }
@@ -84,7 +84,7 @@ public class FieldOfView : MonoBehaviour
             //var distToTarget = Vector3.Distance(transform.position, target.position);
                 
             if (Physics.Raycast(transform.position + new Vector3(0, rayHeight, 0),
-                dirToTarget + new Vector3(0, rayHeight, 0), _aiStateController.distanceFromTarget, targetMask)) continue; //change target mask when obstacles are present
+                dirToTarget + new Vector3(0, rayHeight, 0), _aiController.distanceFromTarget, targetMask)) continue; //change target mask when obstacles are present
 
             // if (!itemInView && target && hasItem)
             // {
@@ -99,7 +99,7 @@ public class FieldOfView : MonoBehaviour
 
             if(!_foundTarget && target != transform) //if we see a target
             {
-                _aiStateController.target = target;
+                _aiController.target = target;
                 _foundTarget = true;
 
 

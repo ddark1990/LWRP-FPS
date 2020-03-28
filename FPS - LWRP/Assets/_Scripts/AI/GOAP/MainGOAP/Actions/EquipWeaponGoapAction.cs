@@ -38,23 +38,23 @@ public class EquipWeaponGoapAction : GoapAction
         return false;
     }
 
-    public override bool checkProceduralPrecondition(AiStateController controller)
+    public override bool checkProceduralPrecondition(AiController controller)
     {
         return true;
     }
 
-    public override bool perform(AiStateController controller)
+    public override bool perform(AiController controller)
     {
         if (_startTime == 0)
         {
             //Debug.Log("Starting to equip weapon.");
             _startTime = Time.time;
             
-            var bestWeapon = controller.aiInventory.GetBestWeaponFromInventory(); //get the best weapon based on a weapon tier check
+            var bestWeapon = controller.inventory.GetBestWeaponFromInventory(); //get the best weapon based on a weapon tier check
             
             if (bestWeapon.weaponSettings.ranged) //choose the correct animations based on the type of weapon we have equipped
             {
-                controller.rangedWeaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
+                controller.rangedWeaponEquiped = controller.inventory.GetBestWeaponFromInventory();
                 
                 if (controller.rangedWeaponEquiped.weaponSettings.weaponTags == Weapon.WeaponSettings.WeaponTags.Pistol)
                 {
@@ -71,7 +71,7 @@ public class EquipWeaponGoapAction : GoapAction
             }
             else
             {
-                controller.meleeWeaponEquiped = controller.aiInventory.GetBestWeaponFromInventory();
+                controller.meleeWeaponEquiped = controller.inventory.GetBestWeaponFromInventory();
                 
                 controller.weaponHolder.ToggleActiveWeapon(controller.meleeWeaponEquiped, true);
                 controller.animator.SetTrigger(equipMeleeWeapon);

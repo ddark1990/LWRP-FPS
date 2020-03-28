@@ -42,14 +42,14 @@ public class WanderGoapAction : GoapAction
         return false;
     }
 
-    public override bool checkProceduralPrecondition(AiStateController controller)
+    public override bool checkProceduralPrecondition(AiController controller)
     {
         return true;
     }
 
-    public override bool perform(AiStateController controller)
+    public override bool perform(AiController controller)
     {
-        if (controller.pickUpAvailable || controller.target) return false;
+        if (controller.pickUpAvailable || controller.target || controller.aiVitals.isDead) return false;
         
         if (_elapsedTime == 0 && !controller.navAgent.hasPath)
         {

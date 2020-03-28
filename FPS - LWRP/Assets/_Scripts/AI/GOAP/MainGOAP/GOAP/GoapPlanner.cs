@@ -14,7 +14,7 @@ public class GoapPlanner
 	 * Returns null if a plan could not be found, or a list of the actions
 	 * that must be performed, in order, to fulfill the goal.
 	 */
-	public Queue<GoapAction> plan(AiStateController aiStateController,
+	public Queue<GoapAction> plan(AiController aiController,
 								  HashSet<GoapAction> availableActions, 
 								  HashSet<KeyValuePair<string,object>> worldState, 
 								  HashSet<KeyValuePair<string,object>> goal) 
@@ -27,7 +27,7 @@ public class GoapPlanner
 		// check what actions can run using their checkProceduralPrecondition
 		HashSet<GoapAction> usableActions = new HashSet<GoapAction> ();
 		foreach (GoapAction a in availableActions) {
-			if ( a.checkProceduralPrecondition(aiStateController) )
+			if ( a.checkProceduralPrecondition(aiController) )
 				usableActions.Add(a);
 		}
 		

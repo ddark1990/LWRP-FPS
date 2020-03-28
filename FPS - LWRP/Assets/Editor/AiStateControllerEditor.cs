@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(AiStateController))]
+[CustomEditor(typeof(AiController))]
 public class AiStateControllerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        var serialObj = (AiStateController)target; //getting all data from here
+        var serialObj = (AiController)target; //getting all data from here
 
         var agroInfo = "Has Agro: " + serialObj.hasAgro;
         var targetInfo = serialObj.hasAgro ? " | Current Target: " + serialObj.target.name : " | Current Target: None ";

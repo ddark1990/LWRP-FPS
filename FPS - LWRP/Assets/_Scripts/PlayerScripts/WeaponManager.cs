@@ -132,7 +132,7 @@ public class WeaponManager : MonoBehaviourPunCallbacks
             var randomRot = Random.Range(-360, 360);
 
             var shell = Instantiate(shellPrefab, shellEjectPoint.position, Quaternion.Euler(randomRot, randomRot, randomRot));
-            shell.GetComponent<Rigidbody>().AddForce(PlayerSelection.Instance.cam.transform.right * 1, ForceMode.Impulse);
+            //shell.GetComponent<Rigidbody>().AddForce(PlayerSelection.Instance.cam.transform.right * 1, ForceMode.Impulse);
         }
 
         if (gunReloadController.maxClipAmmo >= 0) //move into decrement/update bullet count
@@ -223,7 +223,7 @@ public class WeaponManager : MonoBehaviourPunCallbacks
             activeRig.localRotation = Quaternion.Slerp(activeRig.localRotation, Quaternion.Euler(activeRig.GetComponent<RigData>().LookDownSightsRef.localRotation.eulerAngles), animSpeed);
 
             var v = startFov - zoomFovAmount;
-            PlayerSelection.Instance.cam.fieldOfView = Mathf.Lerp(PlayerSelection.Instance.cam.fieldOfView, v, animSpeed);
+            //PlayerSelection.Instance.cam.fieldOfView = Mathf.Lerp(PlayerSelection.Instance.cam.fieldOfView, v, animSpeed);
 
             var sens = FPSController.Instance.MouseSensetivity / 1.5f;
             //GoomerFPSController.FPSController.Instance.MouseSensetivity = sens;
@@ -238,7 +238,7 @@ public class WeaponManager : MonoBehaviourPunCallbacks
             //Debug.Log(activeRig.GetComponent<RigData>().OrigPosRef);
 
             var v = startFov;
-            PlayerSelection.Instance.cam.fieldOfView = Mathf.Lerp(PlayerSelection.Instance.cam.fieldOfView, v, animSpeed);
+            //PlayerSelection.Instance.cam.fieldOfView = Mathf.Lerp(PlayerSelection.Instance.cam.fieldOfView, v, animSpeed);
 
             lookingDownSights = false;
             resetToOrigPos = false;

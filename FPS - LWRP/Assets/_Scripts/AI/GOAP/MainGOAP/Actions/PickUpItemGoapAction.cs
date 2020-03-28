@@ -35,7 +35,7 @@ public class PickUpItemGoapAction : GoapAction
         return true;
     }
 
-    public override bool checkProceduralPrecondition(AiStateController controller)
+    public override bool checkProceduralPrecondition(AiController controller)
     {
         if (!controller.pickUpAvailable) return false;
 
@@ -46,7 +46,7 @@ public class PickUpItemGoapAction : GoapAction
         return true;
     }
     
-    public override bool perform(AiStateController controller)
+    public override bool perform(AiController controller)
     {
         Debug.Log(controller.animator.GetCurrentAnimatorStateInfo(1).length);
         if (_startTime == 0)
@@ -63,7 +63,7 @@ public class PickUpItemGoapAction : GoapAction
         {
             //Debug.Log("Picked up item.");
         
-            controller.aiInventory.AddItemToInventory(_targetItem);
+            controller.inventory.AddItemToInventory(_targetItem);
             
             controller.pickUpAvailable = false; //reset 
             _completed = true;

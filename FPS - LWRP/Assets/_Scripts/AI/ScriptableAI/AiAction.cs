@@ -5,5 +5,5 @@ using UnityEngine.AI;
 
 public abstract class AiAction : ScriptableObject
 {
-    public abstract void Act(AiStateController controller, NavMeshAgent agent);
+    public abstract void Act(AiController controller, NavMeshAgent agent);
 }

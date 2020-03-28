@@ -29,25 +29,23 @@ public class AiVitals : MonoBehaviour
     private const float MaxHunger = 50;
     private const float MaxThirst = 100;
 
-    private AiStateController _aiStateController;
+    private AiController _aiController;
     
     
     private void Awake()
     {
         _startingHealth = health;
-        _aiStateController = GetComponent<AiStateController>();
+        _aiController = GetComponent<AiController>();
     }
     
     private void Update()
     {
         HungerOutput();
         ThirstOutput();
-    }
-
-    private void FixedUpdate()
-    {
-        if (!Input.GetKeyDown(KeyCode.P)) return;
+        
+        if (!Input.GetKeyDown(KeyCode.P)) return; //debug
         Die();
+
     }
 
     public void TakeDamage(float damage)
@@ -81,8 +79,8 @@ public class AiVitals : MonoBehaviour
         var animator = GetComponent<Animator>();
         var navAgent = GetComponent<NavMeshAgent>();
         var rb = GetComponent<Rigidbody>();
-        //var lastColliderHitName = WeaponManager.Instance.ColliderHit.name;
-        //Debug.Log(lastColliderHitName);
+        // var lastColliderHitName = WeaponManager.Instance.ColliderHit.name;
+        // Debug.Log(lastColliderHitName);
 
         if (isDead) //turn into interface
         {
@@ -94,7 +92,7 @@ public class AiVitals : MonoBehaviour
             ragDollController.SetRadDollState(this, animator, navAgent, rb, false);
         }
 
-        GameManager.instance.OnKilledAi(_aiStateController);
+        GameManager.Instance.OnKilledAi(_aiController);
 
         //ragDollController.ApplyBulletForceToCollider(lastColliderHitName);
     }

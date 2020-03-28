@@ -36,7 +36,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
         NavMeshAgent agent;
-        private AiStateController _stateController;
+        private AiController _controller;
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Turn = Animator.StringToHash("Turn");
         private static readonly int VerticalDamp = Animator.StringToHash("VerticalDamp");
@@ -51,7 +51,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             agent = GetComponent<NavMeshAgent>();
             m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
-			_stateController = GetComponent<AiStateController>();
+			_controller = GetComponent<AiController>();
 			//m_Capsule = GetComponent<CapsuleCollider>();
 			//m_CapsuleHeight = m_Capsule.height;
 			//m_CapsuleCenter = m_Capsule.center;
@@ -98,9 +98,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
 			
 			////checks weather the transform is directly behind its destination vector, and if it is, set the horizontal animator float to 0
-			if (_stateController.target)
+			if (_controller.target)
 			{
-				var destinationForward = (agent.destination - _stateController.target.position).normalized;
+				var destinationForward = (agent.destination - _controller.target.position).normalized;
 				var negativeForward = -transform.forward.normalized;
         
 				var destX = Mathf.Round(destinationForward.x * 10f) / 10f;
@@ -135,7 +135,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 					maxZ = destZ - backThreshold;
 				}
         
-				if (_stateController.hasTargetFocus &&  backThreshold > 0 && _stateController && AiStateController.IsBetween(negForwardX, minX, maxX) && AiStateController.IsBetween(negForwardZ, minZ, maxZ) /*Mathf.Approximately(negForwardX, destX) && Mathf.Approximately(negForwardZ, destZ)*/)
+				if (_controller.hasTargetFocus &&  backThreshold > 0 && _controller && AiController.IsBetween(negForwardX, minX, maxX) && AiController.IsBetween(negForwardZ, minZ, maxZ) /*Mathf.Approximately(negForwardX, destX) && Mathf.Approximately(negForwardZ, destZ)*/)
 				{
 					m_TurnAmount = 0;
 					m_ForwardAmount = -1;

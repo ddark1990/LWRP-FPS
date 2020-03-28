@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
 
     public int score;
     public Text scoreText;
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!instance) instance = this;
+        if (!Instance) Instance = this;
     }
 
     private void Update()
@@ -38,10 +38,10 @@ public class GameManager : MonoBehaviour
     }
 
     //events 
-    public void OnKilledAi(AiStateController ai)
+    public void OnKilledAi(AiController ai)
     {
-        PopupInfoController.Instance.AddPopUp("Killed " + ai.tag, 100);
         AddPoints(100);
+        PopupInfoController.Instance.AddPopUp("Killed " + ai.tag, 100);
     }
 
 }

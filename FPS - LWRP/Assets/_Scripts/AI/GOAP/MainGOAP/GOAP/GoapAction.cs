@@ -44,7 +44,7 @@ public abstract class GoapAction : MonoBehaviour {
 	 * Procedurally check if this action can run. Not all actions
 	 * will need this, but some might.
 	 */
-	public abstract bool checkProceduralPrecondition(AiStateController aiStateController);
+	public abstract bool checkProceduralPrecondition(AiController aiController);
 
 	/**
 	 * Run the action.
@@ -52,7 +52,7 @@ public abstract class GoapAction : MonoBehaviour {
 	 * if something happened and it can no longer perform. In this case
 	 * the action queue should clear out and the goal cannot be reached.
 	 */
-	public abstract bool perform(AiStateController aiStateController);
+	public abstract bool perform(AiController aiController);
 
 	/**
 	 * Does this action need to be within range of a target game object?

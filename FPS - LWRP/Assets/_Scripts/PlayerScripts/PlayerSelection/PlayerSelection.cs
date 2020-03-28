@@ -19,7 +19,7 @@ public class PlayerSelection : MonoBehaviour
     [Header("Cache")]
     public bool drawDebugRay;
 
-    [HideInInspector] public Camera cam;
+    //public Camera cam;
     private RaycastHit _hit;
     private Vector3 _origin;
     private Vector3 _direction;
@@ -32,7 +32,7 @@ public class PlayerSelection : MonoBehaviour
             Instance = this;
         }
 
-        cam = GetComponent<Camera>();
+        //cam = Camera.main;
         _transform = transform;
     }
 

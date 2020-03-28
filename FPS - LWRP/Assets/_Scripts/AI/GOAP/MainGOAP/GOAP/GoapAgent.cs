@@ -22,7 +22,7 @@ public class GoapAgent : MonoBehaviour {
 
 	private GoapPlanner planner;
 
-    [HideInInspector] public AiStateController aiStateController;
+    [HideInInspector] public AiController aiController;
 
 
     protected void InitializeAgent()
@@ -41,7 +41,9 @@ public class GoapAgent : MonoBehaviour {
     }
 
     private void Update () {
-		stateMachine.Update (aiStateController);
+	    if (aiController.vitals.isDead) return;
+	    
+	    stateMachine.Update (aiController);
 	}
 
 

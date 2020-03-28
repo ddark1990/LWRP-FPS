@@ -18,7 +18,7 @@ public class RagdollController : MonoBehaviour
         agent.enabled = !active;
         rb.isKinematic = true; 
         animator.enabled = !active;
-        vitals.GetComponent<AiStateController>().enabled = !active;
+        vitals.GetComponent<AiController>().enabled = !active;
         vitals.GetComponent<ThirdPersonCharacter>().enabled = !active;
 
         mainModel.gameObject.SetActive(!active);
@@ -26,7 +26,6 @@ public class RagdollController : MonoBehaviour
         ragdoll.gameObject.SetActive(active);
         ApplyBulletForceToCollider();
 
-        EffectsManager.Instance.PlayDeathSound(audioSource); //eh jok
     } //set the active state of the ragdoll, trasfer animator velocity to the ragdoll based on rootmotion
 
     public static void CopyTransformData(Transform sourceTransform, Transform destTransform, Vector3 velocity)

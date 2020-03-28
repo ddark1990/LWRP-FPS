@@ -14,7 +14,7 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
     
     private void OnEnable()
     {
-        aiStateController = GetComponent<AiStateController>(); //get main AI controller
+        aiController = GetComponent<AiController>(); //get main AI controller
         InitializeAgent();
     }
     
@@ -25,14 +25,14 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
     {
         worldData = new HashSet<KeyValuePair<string, object>>();
 
-        worldData.Add(new KeyValuePair<string, object>("pickUpAvailable", aiStateController.pickUpAvailable));
-        worldData.Add(new KeyValuePair<string, object>("inCombat", aiStateController.inCombat));
-        worldData.Add(new KeyValuePair<string, object>("hasTarget", aiStateController.target != null));
-        worldData.Add(new KeyValuePair<string, object>("hasWeaponInInventory", aiStateController.aiInventory.HasWeaponInInventory()));
+        worldData.Add(new KeyValuePair<string, object>("pickUpAvailable", aiController.pickUpAvailable));
+        worldData.Add(new KeyValuePair<string, object>("inCombat", aiController.inCombat));
+        worldData.Add(new KeyValuePair<string, object>("hasTarget", aiController.target != null));
+        worldData.Add(new KeyValuePair<string, object>("hasWeaponInInventory", aiController.inventory.HasWeaponInInventory()));
         //worldData.Add(new KeyValuePair<string, object>("weaponEquipAvailable", aiStateController.weaponEquipped == null));
-        worldData.Add(new KeyValuePair<string, object>("weaponEquipped", aiStateController.rangedWeaponEquiped != null));
-        worldData.Add(new KeyValuePair<string, object>("isHungry", aiStateController.aiVitals.IsHungry()));
-        worldData.Add(new KeyValuePair<string, object>("isThirsty", aiStateController.aiVitals.IsThirsty()));
+        worldData.Add(new KeyValuePair<string, object>("weaponEquipped", aiController.rangedWeaponEquiped != null));
+        worldData.Add(new KeyValuePair<string, object>("isHungry", aiController.vitals.IsHungry()));
+        worldData.Add(new KeyValuePair<string, object>("isThirsty", aiController.vitals.IsThirsty()));
         //worldData.Add(new KeyValuePair<string, object>("targetAlive", aiStateController.target)); 
         
         return worldData;
@@ -87,18 +87,19 @@ public class AgressiveHumanoidAgent : GoapAgent, IGoap
 
     public bool moveAgent(GoapAction nextAction)
     {
-        if (aiStateController.aiVitals.isDead) return false;
-        
          //if we don't need to move anywhere
          if (previousDestination == nextAction.target.transform.position)
          {
              nextAction.setInRange(true);
              return true;
          }
+         
+         if (!aiController.aiVitals.isDead)
+         {
+             aiController.navAgent.SetDestination(nextAction.target.transform.position);
+         }
 
-        aiStateController.navAgent.SetDestination(nextAction.target.transform.position);
-
-        if (aiStateController.navAgent.hasPath && !aiStateController.navAgent.pathPending && aiStateController.navAgent.remainingDistance <= aiStateController.navAgent.stoppingDistance)
+        if (aiController.navAgent.hasPath && !aiController.navAgent.pathPending && aiController.navAgent.remainingDistance <= aiController.navAgent.stoppingDistance)
         {
             nextAction.setInRange(true);
             previousDestination = nextAction.target.transform.position;

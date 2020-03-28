@@ -30,7 +30,7 @@ public class RangedAttackGoapAction : GoapAction
         return true;
     }
 
-    public override bool checkProceduralPrecondition(AiStateController controller)
+    public override bool checkProceduralPrecondition(AiController controller)
     {
         // if(!controller.target || controller.aiVitals.isDead) return false;
         //
@@ -39,7 +39,7 @@ public class RangedAttackGoapAction : GoapAction
         return true;
     }
 
-    public override bool perform(AiStateController controller)
+    public override bool perform(AiController controller)
     {
         if (startTime == 0f)
         {

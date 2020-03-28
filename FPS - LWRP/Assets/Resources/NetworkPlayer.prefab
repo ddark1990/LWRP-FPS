@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188781510169288265}
   - component: {fileID: 2430834495053712114}
-  - component: {fileID: 580795124877043839}
+  - component: {fileID: 3123602482577986661}
   m_Layer: 0
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MonoBehaviour:
   PlayerID: 0
   playerPrefab: {fileID: 516539756032730848, guid: 6933551bd3bb3ac48a30abef0a2a91d7,
     type: 3}
---- !u!114 &580795124877043839
+--- !u!114 &3123602482577986661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

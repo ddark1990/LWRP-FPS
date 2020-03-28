@@ -11273,6 +11273,7 @@ MonoBehaviour:
   WeaponHolder: {fileID: 4762047062344890210}
   mainAnimator: {fileID: 7262676644674049424}
   secondaryAnimator: {fileID: 6749155626925307233}
+  cam: {fileID: 4762047061799025456}
   IsWalking: 0
   IsSprinting: 0
   IsGrounded: 0
@@ -13841,7 +13842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -167.65039, y: 85.54004}
+  m_AnchoredPosition: {x: -167.65039, y: 85.53906}
   m_SizeDelta: {x: 288.57, y: 122.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4762047061767943207
@@ -14094,7 +14095,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   drawDebugRay: 1
-  cam: {fileID: 0}
 --- !u!114 &1884943620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15102,7 +15102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -13.988, y: 71.774}
+  m_AnchoredPosition: {x: -13.988, y: 71.77344}
   m_SizeDelta: {x: 569.983, y: 89.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4762047062063521916
@@ -23095,7 +23095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1270, y: 266.9362}
+  m_AnchoredPosition: {x: -1270, y: 266.9375}
   m_SizeDelta: {x: 570.0212, y: 480.3276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4762047063645067918

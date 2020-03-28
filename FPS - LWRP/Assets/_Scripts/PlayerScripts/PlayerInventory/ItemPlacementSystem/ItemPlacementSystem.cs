@@ -60,6 +60,7 @@ public class ItemPlacementSystem : MonoBehaviour
     {
         if (!inPlacementMode) return;
         
+        /*
         var ray = PlayerSelection.Instance.cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)); //center of screen in screen coords
         GetPlacementRaycast(ray, out _hit, maxPlacementDistance, groundLayer); //get active ray on the build layer
 
@@ -67,6 +68,7 @@ public class ItemPlacementSystem : MonoBehaviour
         UpdatePreviewTransforms(ray);
 
         if (drawDebugRay) Debug.DrawRay(ray.origin, ray.direction * maxPlacementDistance, Color.white); //debug
+    */
     }
     private void UpdatePreviewTransforms(Ray ray)
     {

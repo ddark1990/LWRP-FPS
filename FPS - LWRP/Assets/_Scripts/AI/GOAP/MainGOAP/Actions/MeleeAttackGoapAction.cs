@@ -35,27 +35,31 @@ public class MeleeAttackGoapAction : GoapAction
         return true;
     }
 
-    public override bool checkProceduralPrecondition(AiStateController controller)
+    public override bool checkProceduralPrecondition(AiController controller)
     {
-        if(!controller.target || controller.aiVitals.isDead) return false;
+        if(!controller.target || controller.vitals.isDead) return false;
+
+        controller.navAgent.stoppingDistance = controller.aiArchetype.combatSettings.meleeDistance;
         
         target = controller.target;
         return true;
     }
     
-    public override bool perform(AiStateController controller) //activates animation which holds an event that gives all hits
+    public override bool perform(AiController controller) //activates animation which holds an event that gives all hits
     {
         if (startTime == 0f)
         {
             Debug.Log("Starting to melee attack.");
             
             controller.animator.SetTrigger(meleeAttack);
-
+            
             startTime = Time.time;
         }
-        if (Time.time - startTime > attackRate/*&& controller.navAgent.remainingDistance <= controller.navAgent.stoppingDistance*/)
+        if (Time.time - startTime > attackRate)
         {
             Debug.Log("Finished melee attacking.");
+
+            controller.navAgent.stoppingDistance = 0.2f; //reset stopping distance to default
             
             completed = true;
         }

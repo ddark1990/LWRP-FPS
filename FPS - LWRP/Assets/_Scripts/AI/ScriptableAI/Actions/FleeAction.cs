@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "Ai/Actions/Flee")]
 public class FleeAction : AiAction
 {
-    public override void Act(AiStateController controller, NavMeshAgent agent)
+    public override void Act(AiController controller, NavMeshAgent agent)
     {
         
     }

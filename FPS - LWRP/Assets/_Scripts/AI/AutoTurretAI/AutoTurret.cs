@@ -8,7 +8,7 @@ public class AutoTurret : MonoBehaviour
 
     [Header("Cache")]
     public AudioSource audioSource;
-    public AiStateController aiStateController;
+    public AiController aiController;
     public Animator animator;
     public Transform shaftTransform;
     private static readonly int HasTarget = Animator.StringToHash("hasTarget");

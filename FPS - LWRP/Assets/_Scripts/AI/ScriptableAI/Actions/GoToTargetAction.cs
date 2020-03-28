@@ -6,12 +6,12 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "Ai/Actions/Follow")]
 public class GoToTargetAction : AiAction
 {
-    public override void Act(AiStateController controller, NavMeshAgent agent)
+    public override void Act(AiController controller, NavMeshAgent agent)
     {
         GoToTarget(controller, agent);
     }
 
-    private void GoToTarget(AiStateController controller, NavMeshAgent agent)
+    private void GoToTarget(AiController controller, NavMeshAgent agent)
     {
         agent.isStopped = false;
 

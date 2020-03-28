@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void OnStartGamePress()
     {
-        SceneManager.LoadSceneAsync("MinigameArenaScene");
+        SceneManager.LoadSceneAsync(1);
     }
     
     public void OnOptionsPress()

@@ -12,7 +12,7 @@ public class SpawnerDebug : MonoBehaviour
         //InvokeRepeating("SpawnPumpkin", 1, 1);
     }
 
-    public void SpawnPumpkin()
+    public void Spawn()
     {
         var prefab = SimplePoolManager.Instance.SpawnFromPool(SpawnPrefab.name, SpawnLocation.position, SpawnLocation.rotation);
 

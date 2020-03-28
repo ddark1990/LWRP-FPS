@@ -32,12 +32,12 @@ public class UnEquipWeaponGoapAction : GoapAction
         return false;
     }
 
-    public override bool checkProceduralPrecondition(AiStateController controller)
+    public override bool checkProceduralPrecondition(AiController controller)
     {
         return true;
     }
 
-    public override bool perform(AiStateController controller)
+    public override bool perform(AiController controller)
     {
         if (_startTime == 0)
         {
